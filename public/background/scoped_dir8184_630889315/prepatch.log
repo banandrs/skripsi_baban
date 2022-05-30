@@ -1,0 +1,64 @@
+Blizzard PrePatch v2.70 compiled on Sep  9 2003
+This program patches Diablo II Expansion
+
+Log created at 12:34 pm on 10/22/2021
+
+WARNING: unable to delete file 'E:\Downloads\Diablo.II.Complete.Edition\Diablo II Complete Edition\Bnclient.dll'
+The system cannot find the file specified.
+
+WARNING: unable to delete file 'E:\Downloads\Diablo.II.Complete.Edition\Diablo II Complete Edition\D2Client.dll'
+The system cannot find the file specified.
+
+WARNING: unable to delete file 'E:\Downloads\Diablo.II.Complete.Edition\Diablo II Complete Edition\D2CMPd.dll'
+The system cannot find the file specified.
+
+WARNING: unable to delete file 'E:\Downloads\Diablo.II.Complete.Edition\Diablo II Complete Edition\D2Common.dll'
+The system cannot find the file specified.
+
+WARNING: unable to delete file 'E:\Downloads\Diablo.II.Complete.Edition\Diablo II Complete Edition\D2DDraw.dll'
+The system cannot find the file specified.
+
+WARNING: unable to delete file 'E:\Downloads\Diablo.II.Complete.Edition\Diablo II Complete Edition\D2Direct3D.dll'
+The system cannot find the file specified.
+
+WARNING: unable to delete file 'E:\Downloads\Diablo.II.Complete.Edition\Diablo II Complete Edition\D2Game.dll'
+The system cannot find the file specified.
+
+WARNING: unable to delete file 'E:\Downloads\Diablo.II.Complete.Edition\Diablo II Complete Edition\D2Gdi.dll'
+The system cannot find the file specified.
+
+WARNING: unable to delete file 'E:\Downloads\Diablo.II.Complete.Edition\Diablo II Complete Edition\D2Gfx.dll'
+The system cannot find the file specified.
+
+WARNING: unable to delete file 'E:\Downloads\Diablo.II.Complete.Edition\Diablo II Complete Edition\D2Glide.dll'
+The system cannot find the file specified.
+
+WARNING: unable to delete file 'E:\Downloads\Diablo.II.Complete.Edition\Diablo II Complete Edition\D2Lang.dll'
+The system cannot find the file specified.
+
+WARNING: unable to delete file 'E:\Downloads\Diablo.II.Complete.Edition\Diablo II Complete Edition\D2Launch.dll'
+The system cannot find the file specified.
+
+WARNING: unable to delete file 'E:\Downloads\Diablo.II.Complete.Edition\Diablo II Complete Edition\D2MCPClient.dll'
+The system cannot find the file specified.
+
+WARNING: unable to delete file 'E:\Downloads\Diablo.II.Complete.Edition\Diablo II Complete Edition\D2Multi.dll'
+The system cannot find the file specified.
+
+WARNING: unable to delete file 'E:\Downloads\Diablo.II.Complete.Edition\Diablo II Complete Edition\D2Net.dll'
+The system cannot find the file specified.
+
+WARNING: unable to delete file 'E:\Downloads\Diablo.II.Complete.Edition\Diablo II Complete Edition\D2Sound.dll'
+The system cannot find the file specified.
+
+WARNING: unable to delete file 'E:\Downloads\Diablo.II.Complete.Edition\Diablo II Complete Edition\D2Win.dll'
+The system cannot find the file specified.
+
+WARNING: unable to delete file 'E:\Downloads\Diablo.II.Complete.Edition\Diablo II Complete Edition\Fog.dll'
+The system cannot find the file specified.
+
+WARNING: unable to delete file 'E:\Downloads\Diablo.II.Complete.Edition\Diablo II Complete Edition\Storm.dll'
+The system cannot find the file specified.
+
+RESULT: Prepatch succeeded with warnings noted above
+
