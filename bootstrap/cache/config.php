@@ -8,7 +8,7 @@
     'timezone' => 'UTC',
     'locale' => 'en',
     'fallback_locale' => 'en',
-    'key' => 'base64:IBUjNW9pU7CM6484d9JFm0VwMGlsqkcTuZls/Q4p5W8=',
+    'key' => 'base64:66XI4dGFp2hYn10v67Om9ZonUDragB2EYJPpN2orABs=',
     'cipher' => 'AES-256-CBC',
     'log' => 'single',
     'log_level' => 'debug',
@@ -192,7 +192,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\laragon\\www\\studio-foto-4\\storage\\framework/cache/data',
+        'path' => 'C:\\laragon\\www\\skripsi_baban\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -232,7 +232,7 @@
       'sqlite' => 
       array (
         'driver' => 'sqlite',
-        'database' => 'sinemakoe',
+        'database' => 'skripsi_baban',
         'prefix' => '',
       ),
       'mysql' => 
@@ -240,9 +240,9 @@
         'driver' => 'mysql',
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'sinemakoe',
+        'database' => 'skripsi_baban',
         'username' => 'root',
-        'password' => 'root',
+        'password' => '',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
@@ -255,9 +255,9 @@
         'driver' => 'pgsql',
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'sinemakoe',
+        'database' => 'skripsi_baban',
         'username' => 'root',
-        'password' => 'root',
+        'password' => '',
         'charset' => 'utf8',
         'prefix' => '',
         'schema' => 'public',
@@ -268,9 +268,9 @@
         'driver' => 'sqlsrv',
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'sinemakoe',
+        'database' => 'skripsi_baban',
         'username' => 'root',
-        'password' => 'root',
+        'password' => '',
         'charset' => 'utf8',
         'prefix' => '',
       ),
@@ -297,12 +297,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\laragon\\www\\studio-foto-4\\storage\\app',
+        'root' => 'C:\\laragon\\www\\skripsi_baban\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\laragon\\www\\studio-foto-4\\storage\\app/public',
+        'root' => 'C:\\laragon\\www\\skripsi_baban\\storage\\app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
       ),
@@ -319,23 +319,23 @@
   'mail' => 
   array (
     'driver' => 'smtp',
-    'host' => 'smtp.googlemail.com',
-    'port' => '587',
+    'host' => 'smtp.mailtrap.io',
+    'port' => '2525',
     'from' => 
     array (
       'address' => 'hello@example.com',
       'name' => 'Example',
     ),
-    'encryption' => 'tls',
-    'username' => 'fvckingdude@gmail.com',
-    'password' => 'hujanciahna7',
+    'encryption' => NULL,
+    'username' => NULL,
+    'password' => NULL,
     'sendmail' => '/usr/sbin/sendmail -bs',
     'markdown' => 
     array (
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'C:\\laragon\\www\\studio-foto-4\\resources\\views/vendor/mail',
+        0 => 'C:\\laragon\\www\\skripsi_baban\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -415,7 +415,7 @@
     'lifetime' => 120,
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'C:\\laragon\\www\\studio-foto-4\\storage\\framework/sessions',
+    'files' => 'C:\\laragon\\www\\skripsi_baban\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -450,7 +450,7 @@
     'middleware' => 
     array (
       'toast_position' => 'top-end',
-      'toast_close_button' => false,
+      'toast_close_button' => true,
       'alert_auto_close' => 5000,
     ),
   ),
@@ -458,9 +458,9 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\laragon\\www\\studio-foto-4\\resources\\views',
+      0 => 'C:\\laragon\\www\\skripsi_baban\\resources\\views',
     ),
-    'compiled' => 'C:\\laragon\\www\\studio-foto-4\\storage\\framework\\views',
+    'compiled' => 'C:\\laragon\\www\\skripsi_baban\\storage\\framework\\views',
   ),
   'debugbar' => 
   array (
@@ -473,7 +473,7 @@
     array (
       'enabled' => true,
       'driver' => 'file',
-      'path' => 'C:\\laragon\\www\\studio-foto-4\\storage\\debugbar',
+      'path' => 'C:\\laragon\\www\\skripsi_baban\\storage\\debugbar',
       'connection' => NULL,
       'provider' => '',
     ),
