@@ -8,7 +8,7 @@
     'timezone' => 'UTC',
     'locale' => 'en',
     'fallback_locale' => 'en',
-    'key' => 'base64:66XI4dGFp2hYn10v67Om9ZonUDragB2EYJPpN2orABs=',
+    'key' => 'base64:IBUjNW9pU7CM6484d9JFm0VwMGlsqkcTuZls/Q4p5W8=',
     'cipher' => 'AES-256-CBC',
     'log' => 'single',
     'log_level' => 'debug',
@@ -43,6 +43,7 @@
       26 => 'App\\Providers\\AuthServiceProvider',
       27 => 'App\\Providers\\EventServiceProvider',
       28 => 'App\\Providers\\RouteServiceProvider',
+      29 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     ),
     'aliases' => 
     array (
@@ -84,6 +85,7 @@
       'Form' => 'Collective\\Html\\FormFacade',
       'Html' => 'Collective\\Html\\HtmlFacade',
       'Alert' => 'RealRashid\\SweetAlert\\Facades\\Alert',
+      'Excel' => 'Maatwebsite\\Excel\\Facades\\Excel',
     ),
   ),
   'auth' => 
@@ -121,7 +123,7 @@
       'admins' => 
       array (
         'driver' => 'eloquent',
-        'model' => 'App\\Model\\admin\\admin',
+        'model' => 'App\\Model\\Admin\\Admin',
       ),
     ),
     'passwords' => 
@@ -192,7 +194,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\laragon\\www\\skripsi_baban\\storage\\framework/cache/data',
+        'path' => 'C:\\laragon\\www\\studio-foto-4\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -232,7 +234,7 @@
       'sqlite' => 
       array (
         'driver' => 'sqlite',
-        'database' => 'skripsi_baban',
+        'database' => 'sinemakoe',
         'prefix' => '',
       ),
       'mysql' => 
@@ -240,9 +242,9 @@
         'driver' => 'mysql',
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'skripsi_baban',
+        'database' => 'sinemakoe',
         'username' => 'root',
-        'password' => '',
+        'password' => 'root',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
@@ -255,9 +257,9 @@
         'driver' => 'pgsql',
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'skripsi_baban',
+        'database' => 'sinemakoe',
         'username' => 'root',
-        'password' => '',
+        'password' => 'root',
         'charset' => 'utf8',
         'prefix' => '',
         'schema' => 'public',
@@ -268,9 +270,9 @@
         'driver' => 'sqlsrv',
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'skripsi_baban',
+        'database' => 'sinemakoe',
         'username' => 'root',
-        'password' => '',
+        'password' => 'root',
         'charset' => 'utf8',
         'prefix' => '',
       ),
@@ -288,6 +290,117 @@
       ),
     ),
   ),
+  'excel' => 
+  array (
+    'exports' => 
+    array (
+      'chunk_size' => 1000,
+      'pre_calculate_formulas' => false,
+      'strict_null_comparison' => false,
+      'csv' => 
+      array (
+        'delimiter' => ',',
+        'enclosure' => '"',
+        'line_ending' => '
+',
+        'use_bom' => false,
+        'include_separator_line' => false,
+        'excel_compatibility' => false,
+        'output_encoding' => '',
+      ),
+      'properties' => 
+      array (
+        'creator' => '',
+        'lastModifiedBy' => '',
+        'title' => '',
+        'description' => '',
+        'subject' => '',
+        'keywords' => '',
+        'category' => '',
+        'manager' => '',
+        'company' => '',
+      ),
+    ),
+    'imports' => 
+    array (
+      'read_only' => true,
+      'ignore_empty' => false,
+      'heading_row' => 
+      array (
+        'formatter' => 'slug',
+      ),
+      'csv' => 
+      array (
+        'delimiter' => NULL,
+        'enclosure' => '"',
+        'escape_character' => '\\',
+        'contiguous' => false,
+        'input_encoding' => 'UTF-8',
+      ),
+      'properties' => 
+      array (
+        'creator' => '',
+        'lastModifiedBy' => '',
+        'title' => '',
+        'description' => '',
+        'subject' => '',
+        'keywords' => '',
+        'category' => '',
+        'manager' => '',
+        'company' => '',
+      ),
+    ),
+    'extension_detector' => 
+    array (
+      'xlsx' => 'Xlsx',
+      'xlsm' => 'Xlsx',
+      'xltx' => 'Xlsx',
+      'xltm' => 'Xlsx',
+      'xls' => 'Xls',
+      'xlt' => 'Xls',
+      'ods' => 'Ods',
+      'ots' => 'Ods',
+      'slk' => 'Slk',
+      'xml' => 'Xml',
+      'gnumeric' => 'Gnumeric',
+      'htm' => 'Html',
+      'html' => 'Html',
+      'csv' => 'Csv',
+      'tsv' => 'Csv',
+      'pdf' => 'Dompdf',
+    ),
+    'value_binder' => 
+    array (
+      'default' => 'Maatwebsite\\Excel\\DefaultValueBinder',
+    ),
+    'cache' => 
+    array (
+      'driver' => 'memory',
+      'batch' => 
+      array (
+        'memory_limit' => 60000,
+      ),
+      'illuminate' => 
+      array (
+        'store' => NULL,
+      ),
+    ),
+    'transactions' => 
+    array (
+      'handler' => 'db',
+      'db' => 
+      array (
+        'connection' => NULL,
+      ),
+    ),
+    'temporary_files' => 
+    array (
+      'local_path' => 'C:\\laragon\\www\\studio-foto-4\\storage\\framework/cache/laravel-excel',
+      'remote_disk' => NULL,
+      'remote_prefix' => NULL,
+      'force_resync_remote' => NULL,
+    ),
+  ),
   'filesystems' => 
   array (
     'default' => 'local',
@@ -297,12 +410,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\laragon\\www\\skripsi_baban\\storage\\app',
+        'root' => 'C:\\laragon\\www\\studio-foto-4\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\laragon\\www\\skripsi_baban\\storage\\app/public',
+        'root' => 'C:\\laragon\\www\\studio-foto-4\\storage\\app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
       ),
@@ -316,26 +429,27 @@
       ),
     ),
   ),
+  'helpers' => 1,
   'mail' => 
   array (
     'driver' => 'smtp',
-    'host' => 'smtp.mailtrap.io',
-    'port' => '2525',
+    'host' => 'smtp.googlemail.com',
+    'port' => '587',
     'from' => 
     array (
       'address' => 'hello@example.com',
       'name' => 'Example',
     ),
-    'encryption' => NULL,
-    'username' => NULL,
-    'password' => NULL,
+    'encryption' => 'tls',
+    'username' => 'fvckingdude@gmail.com',
+    'password' => 'hujanciahna7',
     'sendmail' => '/usr/sbin/sendmail -bs',
     'markdown' => 
     array (
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'C:\\laragon\\www\\skripsi_baban\\resources\\views/vendor/mail',
+        0 => 'C:\\laragon\\www\\studio-foto-4\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -415,7 +529,7 @@
     'lifetime' => 120,
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'C:\\laragon\\www\\skripsi_baban\\storage\\framework/sessions',
+    'files' => 'C:\\laragon\\www\\studio-foto-4\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -450,7 +564,7 @@
     'middleware' => 
     array (
       'toast_position' => 'top-end',
-      'toast_close_button' => true,
+      'toast_close_button' => false,
       'alert_auto_close' => 5000,
     ),
   ),
@@ -458,9 +572,9 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\laragon\\www\\skripsi_baban\\resources\\views',
+      0 => 'C:\\laragon\\www\\studio-foto-4\\resources\\views',
     ),
-    'compiled' => 'C:\\laragon\\www\\skripsi_baban\\storage\\framework\\views',
+    'compiled' => 'C:\\laragon\\www\\studio-foto-4\\storage\\framework\\views',
   ),
   'debugbar' => 
   array (
@@ -473,7 +587,7 @@
     array (
       'enabled' => true,
       'driver' => 'file',
-      'path' => 'C:\\laragon\\www\\skripsi_baban\\storage\\debugbar',
+      'path' => 'C:\\laragon\\www\\studio-foto-4\\storage\\debugbar',
       'connection' => NULL,
       'provider' => '',
     ),

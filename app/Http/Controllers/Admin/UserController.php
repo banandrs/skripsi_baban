@@ -115,4 +115,11 @@ class UserController extends Controller
         admin::where('id', $id)->delete();
         return redirect()->back()->with('message', 'User is deleted successfully');
     }
+
+
+
+    public function scan($phone)
+    {
+        return view('admin.user.scan', compact('phone'));
+    }
 }

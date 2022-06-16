@@ -13,15 +13,13 @@ Paket Foto
 @endsection
 
 @section('main-content')
-<section class="hero-wrap hero-wrap-2" style="background-image: url('{{ asset('haircare/images/camera0.jpg') }}');"
-    data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2" style="background-image: url('{{ asset('haircare/images/camera0.jpg') }}');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
             <div class="col-md-9 ftco-animate pb-5 text-center">
                 <h2 class="mb-0 bread">Paket Foto</h2>
-                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Beranda <i
-                                class="ion-ios-arrow-round-forward"></i></a></span> <span>Paket Foto</span></p>
+                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Beranda <i class="ion-ios-arrow-round-forward"></i></a></span> <span>Paket Foto</span></p>
             </div>
         </div>
     </div>
@@ -37,6 +35,19 @@ Paket Foto
         </div>
         <div class="row justify-content-center">
             <div class="col-md-10 ftco-animate fadeInUp ftco-animated">
+
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <strong>Whoops!</strong>
+                    There are some problems with your input.<br /><br />
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
                 @if(session()->has('message'))
                 <div class="alert alert-danger">
                     {{ session()->get('message') }}
@@ -101,6 +112,18 @@ Paket Foto
                         <div class="form-group">
                             {!! Form::text('email', null, ['id' => 'email', 'class' => 'form-control', 'placeholder' =>
                             'Email']) !!}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {!! Form::text('umur', null, ['id' => 'umur', 'class' => 'form-control', 'placeholder' =>
+                            'umur']) !!}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {!! Form::text('pekerjaan', null, ['id' => 'pekerjaan', 'class' => 'form-control', 'placeholder' =>
+                            'pekerjaan']) !!}
                         </div>
                     </div>
                 </div>

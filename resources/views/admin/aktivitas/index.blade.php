@@ -63,8 +63,7 @@
 										{{ $log->user_id }}
 									</td>
 									<td class="text-center">
-										<form id="delete-form-{{ $log->id }}" method="post"
-											action="{{ route('aktivitas.destroy',$log->id) }}" style="display: none">
+										<form id="delete-form-{{ $log->id }}" method="post" action="{{ route('aktivitas.destroy',$log->id) }}" style="display: none">
 											{{ csrf_field() }}
 											{{ method_field('DELETE') }}
 										</form>
@@ -95,10 +94,10 @@
 <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.5/datatables.min.js"></script>
 <script>
-	$(document).ready( function () {
-        $('#example1').DataTable({
-          "dom": '<".card-body border-bottom py-3"<".d-flex"<".text-muted"l><".ms-auto text-muted"f>>>t<".card-footer d-flex align-items-center"<".m-0 text-muted"i><".pagination m-0 ms-auto"p>><"clear">'
-        });
-      });
+	$(document).ready(function() {
+		$('#example1').DataTable({
+			"dom": '<".card-body border-bottom py-3"<".d-flex"<".text-muted"l><".ms-auto text-muted"f>>>t<".card-footer d-flex align-items-center"<".m-0 text-muted"i><".pagination m-0 ms-auto"p>><"clear">'
+		});
+	});
 </script>
 @endsection

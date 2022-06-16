@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Admin\Jadwal_foto;
 use App\Model\User\Paket_foto;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ReservasiExport;
 
 class DealsController extends Controller
 {
@@ -27,7 +29,13 @@ class DealsController extends Controller
     public function index()
     {
         $reservasis = Jadwal_foto::all();
-        return view('admin.reservasi.index',compact('reservasis'));
+        return view('admin.reservasi.index', compact('reservasis'));
+    }
+
+    public function exportExcel()
+    {
+        $reservasi = Jadwal_foto::all();
+        return Excel::download(new ReservasiExport($reservasi), 'data-reservasi.xlsx');
     }
 
     /**
@@ -65,7 +73,7 @@ class DealsController extends Controller
     public function edit(Jadwal_foto $reservasi)
     {
         $pakets = Paket_foto::all();
-        return view('admin.reservasi.createOrUpdate',compact('reservasi','pakets'));
+        return view('admin.reservasi.createOrUpdate', compact('reservasi', 'pakets'));
     }
 
     /**
@@ -88,7 +96,7 @@ class DealsController extends Controller
      */
     public function destroy($id)
     {
-        Jadwal_foto::where('id',$id)->delete();
+        Jadwal_foto::where('id', $id)->delete();
         return redirect()->back();
     }
 }

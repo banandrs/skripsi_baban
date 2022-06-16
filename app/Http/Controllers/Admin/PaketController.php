@@ -17,9 +17,9 @@ class PaketController extends Controller
     }
 
     public function index()
-    {   
-        $pakets = Paket_foto::select('id','paket','paket_slug','background','created_at','keterangan')->orderBy('created_at','desc')->get();
-        return view('admin.paket.index',compact('pakets'));
+    {
+        $pakets = Paket_foto::select('id', 'paket', 'paket_slug', 'background', 'created_at', 'keterangan')->orderBy('created_at', 'desc')->get();
+        return view('admin.paket.index', compact('pakets'));
     }
 
     public function create()
@@ -29,8 +29,8 @@ class PaketController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'paket'   => 'required',
+        $this->validate($request, [
+            'paket'         => 'required',
             'harga'         => 'required',
             'kapasitas'     => 'required',
             'durasi'        => 'required',
@@ -38,13 +38,13 @@ class PaketController extends Controller
             'cetak_foto'    => 'required',
             'file_foto'     => 'required',
             'keterangan'    => 'required',
-            ]);
+        ]);
 
         $image = $request->file('background');
         $jalurTujuan = public_path('/background/');
-        $background  = date('YmdHis'). "." .$image->getClientOriginalExtension();
+        $background  = date('YmdHis') . "." . $image->getClientOriginalExtension();
         $image->move($jalurTujuan, $background);
-        
+
         $paket              = new Paket_foto;
         $paket->paket       = $request->paket;
         $paket->paket_slug  = Str::slug($request->paket);
@@ -56,7 +56,7 @@ class PaketController extends Controller
         $paket->file_foto   = $request->file_foto;
         $paket->keterangan  = $request->keterangan;
         $paket->save();
-        
+
         return redirect(route('paket.index'))->withToastSuccess('Data Berhasil Disimpan!');
     }
 
@@ -67,41 +67,41 @@ class PaketController extends Controller
 
     public function edit(Paket_foto $paket)
     {
-        return view('admin.paket.createOrUpdate',compact('paket'));
+        return view('admin.paket.createOrUpdate', compact('paket'));
     }
 
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'paket'=>'required',
-            'harga' => 'required',
-            'kapasitas' => 'required',
-            'durasi' => 'required',
+        $this->validate($request, [
+            'paket'         => 'required',
+            'harga'         => 'required',
+            'kapasitas'     => 'required',
+            'durasi'        => 'required',
             'background'    => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'cetak_foto' => 'required',
-            'file_foto' => 'required',
-            'keterangan' => 'required',
-            ]);
-        
+            'cetak_foto'    => 'required',
+            'file_foto'     => 'required',
+            'keterangan'    => 'required',
+        ]);
+
         $paket = Paket_foto::find($id);
         $paket->paket = $request->paket;
         $paket->harga = preg_replace('/[^0-9]/', '', $request->harga);
         $paket->kapasitas = $request->kapasitas;
         $paket->durasi = $request->durasi;
-        if($request->background != ''){
+        if ($request->background != '') {
             $jalurTujuan = public_path('/background/');
 
-            if($paket->background != '' && $paket->background != null){
-                $background_old = $jalurTujuan.$paket->background;
-                File::delete($background_old);         
+            if ($paket->background != '' && $paket->background != null) {
+                $background_old = $jalurTujuan . $paket->background;
+                File::delete($background_old);
             }
 
             $image = $request->file('background');
-            $background_new  = date('YmdHis'). "." .$image->getClientOriginalExtension();
+            $background_new  = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($jalurTujuan, $background_new);
             $paket->background = $background_new;
         }
-        
+
         $paket->cetak_foto = $request->cetak_foto;
         $paket->file_foto = $request->file_foto;
         $paket->keterangan = $request->keterangan;
@@ -112,9 +112,9 @@ class PaketController extends Controller
 
     public function destroy($id)
     {
-        $background = Paket_foto::where('id',$id)->first();
-        File::delete('background/'.$background->background);
-        Paket_foto::where('id',$id)->delete();
+        $background = Paket_foto::where('id', $id)->first();
+        File::delete('background/' . $background->background);
+        Paket_foto::where('id', $id)->delete();
         return redirect()->back();
     }
 }

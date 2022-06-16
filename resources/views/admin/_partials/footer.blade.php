@@ -8,7 +8,7 @@
         <ul class="list-inline list-inline-dots mb-0">
           <li class="list-inline-item">
             Copyright &copy; 2022
-            <a href="." class="link-secondary">Studio Foto</a>.
+            <a href="." class="link-secondary">Sinemaku</a>.
             All rights reserved.
           </li>
         </ul>

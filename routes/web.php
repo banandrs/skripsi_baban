@@ -1,6 +1,5 @@
 <?php
 
-
 // User Routes
 Route::group(['namespace' => 'User'], function () {
 	Route::get('/', 'HomeController@index')->name('user.home');
@@ -17,6 +16,7 @@ Route::group(['namespace' => 'User'], function () {
 	Route::get('paket-foto', 'PaketController@index')->name('user.paket-foto');
 	Route::get('paket-foto/{id}/booking', 'PaketController@create')->name('user.paket.create');
 	Route::post('paket-foto/booking', 'PaketController@store')->name('user.paket.booking');
+	Route::get('paket-foto/{id}/invoice', 'PaketController@show')->name('user.paket.invoice');
 
 	Route::get('promo', 'PromoController@index');
 
@@ -41,6 +41,7 @@ Route::group(['namespace' => 'User'], function () {
 Route::group(['namespace' => 'Admin'], function () {
 	Route::get('admin/home', 'HomeController@index')->name('admin.home');
 	// Deals Routes
+	Route::get('admin/reservasi/export_excel', 'DealsController@exportExcel')->name('reservasi.export');
 	Route::resource('admin/reservasi', 'DealsController');
 	// Paket Foto Routes
 	Route::resource('admin/paket', 'PaketController');
@@ -51,6 +52,7 @@ Route::group(['namespace' => 'Admin'], function () {
 	// Mail Routes
 	Route::resource('admin/mail', 'MailController');
 	// Users Routes
+	Route::get('admin/user/scan/{phone}', 'UserController@scan')->name('user.scan');
 	Route::resource('admin/user', 'UserController');
 	// Pelanggan Routes
 	Route::resource('admin/pelanggan', 'PelangganController');
@@ -58,6 +60,7 @@ Route::group(['namespace' => 'Admin'], function () {
 	Route::resource('admin/promo', 'PromoController');
 	Route::get('admin/{id}/kirim-email', 'PromoController@email')->name('admin.email');
 	// Route::get('pengaduan/{id}/email','PengaduanController@email')->name('pengaduan.email');
+	Route::resource('admin/kirim-wa', 'WAController');
 	// Roles Routes
 	Route::resource('admin/role', 'RoleController');
 	// Aktivitas Routes

@@ -56,10 +56,11 @@
                     @endforeach
                   </td>
                   <td>{{ $user->status? 'Active' : 'Not Active' }}</td>
-                  <td><a href="{{ route('user.edit',$user->id) }}" class="btn btn-sm btn-success">Sunting</a>
+                  <td>
+                    <a href="{{ route('user.scan', $user->phone) }}" class="btn btn-sm btn-primary">Scan WA</a>
+                    <a href="{{ route('user.edit',$user->id) }}" class="btn btn-sm btn-success">Sunting</a>
                     <a href="{{ route('user.edit',$user->id) }}" class="btn btn-sm btn-danger">Hapus</a>
-                    <form id="delete-form-{{ $user->id }}" method="post" action="{{ route('user.destroy',$user->id) }}"
-                      style="display: none">
+                    <form id="delete-form-{{ $user->id }}" method="post" action="{{ route('user.destroy',$user->id) }}" style="display: none">
                       {{ csrf_field() }}
                       {{ method_field('DELETE') }}
                     </form>
@@ -88,10 +89,10 @@
 <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.5/datatables.min.js"></script>
 <script>
-  $(document).ready( function () {
-            $('#example1').DataTable({
-              "dom": '<".card-body border-bottom py-3"<".d-flex"<".text-muted"l><".ms-auto text-muted"f>>>t<".card-footer d-flex align-items-center"<".m-0 text-muted"i><".pagination m-0 ms-auto"p>><"clear">'
-            });
-          });
+  $(document).ready(function() {
+    $('#example1').DataTable({
+      "dom": '<".card-body border-bottom py-3"<".d-flex"<".text-muted"l><".ms-auto text-muted"f>>>t<".card-footer d-flex align-items-center"<".m-0 text-muted"i><".pagination m-0 ms-auto"p>><"clear">'
+    });
+  });
 </script>
 @endsection
