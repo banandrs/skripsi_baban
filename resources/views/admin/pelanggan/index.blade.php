@@ -33,11 +33,13 @@
             <table id="example1" class="table card-table table-vcenter text-nowrap datatable hover">
               <thead>
                 <tr>
-                  <th width="5%">#</th>
-                  <th width="25%">Nama</th>
-                  <th width="20%">Email</th>
-                  <th width="35%">Nomor Handphone</th>
-                  <th width="15%"></th>
+                  <th>#</th>
+                  <th>Nama</th>
+                  <th>Umur</th>
+                  <th>Pekerjaan</th>
+                  <th>Email</th>
+                  <th>Nomor Handphone</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -46,6 +48,12 @@
                   <td>{{ $loop->index + 1 }}.</td>
                   <td class="text-muted">
                     {{ $pelanggan->name }}
+                  </td>
+                  <td class="text-muted">
+                    {{ $pelanggan->umur }}
+                  </td>
+                  <td class="text-muted">
+                    {{ $pelanggan->pekerjaan }}
                   </td>
                   <td>
                     {{ $pelanggan->email }}
@@ -74,10 +82,10 @@
 <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.5/datatables.min.js"></script>
 <script>
-  $(document).ready( function () {
-        $('#example1').DataTable({
-          "dom": '<".card-body border-bottom py-3"<".d-flex"<".text-muted"l><".ms-auto text-muted"f>>>t<".card-footer d-flex align-items-center"<".m-0 text-muted"i><".pagination m-0 ms-auto"p>><"clear">'
-        });
-      });
+  $(document).ready(function() {
+    $('#example1').DataTable({
+      "dom": '<".card-body border-bottom py-3"<".d-flex"<".text-muted"l><".ms-auto text-muted"f>>>t<".card-footer d-flex align-items-center"<".m-0 text-muted"i><".pagination m-0 ms-auto"p>><"clear">'
+    });
+  });
 </script>
 @endsection

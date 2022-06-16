@@ -62,11 +62,11 @@
               <div class="header">Pelanggan</div>
               <div class="ms-auto lh-1">
                 <div class="dropdown">
-                  <a class="dropdown-toggle text-muted" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mahasiswa</a>
+                  <a class="dropdown-toggle text-muted" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pekerjaan</a>
                   <div class="dropdown-menu dropdown-menu-end">
                     <a class="dropdown-item active" href="#" id="mahasiswa">Mahasiswa</a>
-                    <a class="dropdown-item" href="#" id="remaja">Remaja</a>
-                    <a class="dropdown-item" href="#" id="dewasa">Dewasa</a>
+                    <a class="dropdown-item" href="#" id="remaja">PNS</a>
+                    <!-- <a class="dropdown-item" href="#" id="dewasa">Dewasa</a> -->
                   </div>
                 </div>
               </div>
@@ -125,7 +125,7 @@
                   <a class="dropdown-toggle text-muted" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">WhatsApp</a>
                   <div class="dropdown-menu dropdown-menu-end">
                     <a class="dropdown-item active" href="#" id="wa">WhatsApp</a>
-                    <a class="dropdown-item" href="#" id="instagram">Instagram</a>
+                    <!-- <a class="dropdown-item" href="#" id="instagram">Instagram</a> -->
                     <a class="dropdown-item" href="#" id="email">E-Mail</a>
                   </div>
                 </div>
@@ -148,7 +148,7 @@
           </div>
         </div>
       </div>
-      <div class="col-12">
+      <!-- <div class="col-12">
         <div class="row row-cards">
           <div class="col-sm-6 col-lg-3">
             <div class="card card-sm">
@@ -156,7 +156,6 @@
                 <div class="row align-items-center">
                   <div class="col-auto">
                     <span class="bg-blue text-white avatar">
-                      <!-- Download SVG icon from http://tabler-icons.io/i/currency-dollar -->
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <desc>Download more icon variants from https://tabler-icons.io/i/currency-dollar</desc>
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -183,7 +182,6 @@
                 <div class="row align-items-center">
                   <div class="col-auto">
                     <span class="bg-green text-white avatar">
-                      <!-- Download SVG icon from http://tabler-icons.io/i/shopping-cart -->
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <desc>Download more icon variants from https://tabler-icons.io/i/shopping-cart</desc>
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -212,7 +210,6 @@
                 <div class="row align-items-center">
                   <div class="col-auto">
                     <span class="bg-twitter text-white avatar">
-                      <!-- Download SVG icon from http://tabler-icons.io/i/brand-twitter -->
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <desc>Download more icon variants from https://tabler-icons.io/i/brand-twitter</desc>
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -238,7 +235,6 @@
                 <div class="row align-items-center">
                   <div class="col-auto">
                     <span class="bg-facebook text-white avatar">
-                      <!-- Download SVG icon from http://tabler-icons.io/i/brand-facebook -->
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <desc>Download more icon variants from https://tabler-icons.io/i/brand-facebook</desc>
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -259,7 +255,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

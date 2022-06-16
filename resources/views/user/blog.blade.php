@@ -52,7 +52,7 @@
 			<div class="col-lg-12 ftco-animate d-flex align-items-center">
 				<div class="text text-center">
 					<span class="subheading">Studio foto profesional</span>
-					<h1 class="mb-4">Selamat datang di <br>sinema untan</h1>
+					<h1 class="mb-4">Selamat datang di <br>Sinemaku.</h1>
 					<p><a href="{{ route('user.paket-foto') }}" class="btn btn-primary btn-outline-primary px-4 py-2">Reservasi</a></p>
 				</div>
 			</div>
@@ -75,7 +75,7 @@
 			<div class="col-md-3 text-center d-flex align-items-stretch">
 				<div class="text-about py-5 px-4">
 					<h1 class="logo">
-						<a href="#"></span>Sinema Untan</a>
+						<a href="#"></span>Sinemaku.</a>
 					</h1>
 					<h2>Beyond Imagination, Change Your View</h2>
 					<p>Informatika Sinematografi dan Fotografi Mahasiswa (ISINEMA) merupakan unit pelaksana kegiatan

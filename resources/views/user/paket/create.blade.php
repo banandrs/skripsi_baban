@@ -28,9 +28,9 @@ Paket Foto
     <div class="container ftco-relative">
         <div class="row justify-content-center pb-3">
             <div class="col-md-10 heading-section text-center ftco-animate fadeInUp ftco-animated">
-                <span class="subheading">Booking</span>
+                <span class="subheading">Reservasi</span>
                 <h2 class="mb-4">{{ $paket->paket }}</h2>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+                <p>Paket Foto Terbaik Untukmu</p>
             </div>
         </div>
         <div class="row justify-content-center">
