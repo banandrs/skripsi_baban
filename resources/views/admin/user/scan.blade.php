@@ -36,6 +36,10 @@
                 <img src="" alt="QRcode" id="qrcode">
                 <p id="logs">Loading...</p>
               </div>
+
+              <div class="text-center">
+                <button type="button" id="btn--hapus-session" class="btn btn-sm btn-danger">Hapus Session WA</button>
+              </div>
             </div>
           </div>
         </div>
@@ -61,7 +65,6 @@
       type: "POST",
       url: 'https://wa-restapi2.herokuapp.com/sessions/add',
       data: {
-        // _token: '{{ csrf_token() }}',
         id: sessionId,
         isLegacy: false
       },
@@ -74,9 +77,29 @@
       },
       error: function(error) {
         console.log(error)
-        $('#logs').text(res.message.responseJSON.message)
+        $('#logs').text(error.responseJSON.message)
       }
     });
+
+
+    $('#btn--hapus-session').click(function() {
+      $.ajax({
+        type: "DELETE",
+        url: `https://wa-restapi2.herokuapp.com/sessions/delete/${sessionId}`,
+        dataType: "JSON",
+        success: function(res) {
+          console.log(res)
+          // window.location.reload(true);
+          $('#qrcode').attr('src', res.data.qr)
+          $('#logs').text(res.message)
+        },
+        error: function(error) {
+          console.log(error)
+          $('#logs').text(error.responseJSON.message)
+          // alert()
+        }
+      });
+    })
 
   });
 </script>

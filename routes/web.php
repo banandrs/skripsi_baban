@@ -67,8 +67,8 @@ Route::group(['namespace' => 'Admin'], function () {
 	Route::resource('admin/aktivitas', 'AktivitasController');
 	// Contact Routes
 	Route::resource('admin/kontak', 'KontakController');
-	// Product Routes
-	Route::resource('admin/produk', 'ProductController');
+	// Laporan Routes
+	Route::resource('admin/laporan', 'LaporanController');
 	// Progress Routes
 	Route::resource('admin/progres', 'ProgressController');
 	// Permission Routes

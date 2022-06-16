@@ -16,7 +16,7 @@
         <div class="row align-items-center">
             <div class="col">
                 <h2 class="page-title">
-                    Promo
+                    Promo (Whatsapp)
                 </h2>
             </div>
         </div>
@@ -66,9 +66,9 @@
                                     <td class="text-center">
                                         <a href="{{ route('promo.edit',$promo->id) }}" class="btn btn-success btn-sm">Sunting
                                         </a>
-                                        <a href="javascript:void(0);" class="btn btn-primary btn-sm send--wa" data-id="{{ $promo->id }}" data-keterangan="{{ $promo->keterangan }}">
+                                        <button type="button" class="btn btn-primary btn-sm send--wa" data-id="{{ $promo->id }}" data-keterangan="{{ $promo->keterangan }}">
                                             Kirim
-                                        </a>
+                                        </button>
                                         <form id="delete-form-{{ $promo->id }}" method="post" action="{{ route('promo.destroy',$promo->id) }}" style="display: none">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
@@ -99,6 +99,7 @@
 @section('footer-section')
 <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.5/datatables.min.js"></script>
+
 <script>
     $(document).ready(function() {
         $('#example1').DataTable({
@@ -119,13 +120,21 @@
                     keterangan: keterangan
                 },
                 dataType: "JSON",
-                success: function(res) {
-                    console.log(res)
-                    window.location.reload(true);
+                beforeSend: () => {
+                    $('.send--wa').attr('disabled', true);
+                },
+                success: (res) => {
+                    $('.send--wa').attr('disabled', false);
+                    location.replace('/admin/kirim-wa');
+                },
+                error: (error) => {
+                    $('.send--wa').attr('disabled', false);
+                    console.log(error)
                 }
             });
         })
 
+        // Swal.fire('Any fool can use a computer')
         // toastr.success('hello world');
     });
 </script>

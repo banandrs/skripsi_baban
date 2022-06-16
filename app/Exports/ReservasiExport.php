@@ -3,7 +3,7 @@
 namespace App\Exports;
 
 use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\FromQuery;
+// use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use App\Model\Admin\Jadwal_foto;
@@ -13,13 +13,6 @@ class ReservasiExport implements FromCollection, WithHeadings, WithMapping
     /**
      * @return \Illuminate\Support\Collection
      */
-    // public function query()
-    // {
-    //     $reservasi = Jadwal_foto::all();
-
-    //     return $reservasi;
-    // }
-
     public function collection()
     {
         return Jadwal_foto::all();
@@ -31,6 +24,7 @@ class ReservasiExport implements FromCollection, WithHeadings, WithMapping
         return [
             $reservasi->paket->paket,
             $reservasi->user->name,
+            $reservasi->user->umur,
             $reservasi->tanggal,
             $reservasi->waktu,
             rupiah($reservasi->paket->harga),
@@ -39,7 +33,7 @@ class ReservasiExport implements FromCollection, WithHeadings, WithMapping
 
     public function headings(): array
     {
-        $head = ['PAKET', 'NAMA', 'TANGGAL', 'WAKTU', 'JUMLAH BAYAR'];
+        $head = ['PAKET', 'NAMA', 'UMUR', 'TANGGAL', 'WAKTU', 'JUMLAH BAYAR'];
         return $head;
     }
 }

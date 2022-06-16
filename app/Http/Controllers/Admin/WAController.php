@@ -25,16 +25,15 @@ class WAController extends Controller
     public function store(Request $request)
     {
         $users = User::all();
+        $sender = auth()->user()->phone;
 
         $params = [];
         foreach ($users as $key => $user) {
             $params[] = ['receiver' => $user->no_hp, 'message' => $request->keterangan];
         }
         $data = json_encode($params);
-        // die;
 
-        // $url = 'https://wa-restapi2.herokuapp.com/chats/send?id=6285974738314';
-        $url = 'https://wa-restapi2.herokuapp.com/chats/send-bulk?id=6281258008824';
+        $url = 'https://wa-restapi2.herokuapp.com/chats/send-bulk?id=' . $sender;
 
         # single
         // $data = json_encode([
@@ -44,11 +43,8 @@ class WAController extends Controller
 
         $response = $this->curl_request('POST', $url, $data);
 
-        // return response()->json($response);
-        // return redirect()->route('kirim-wa.index')->withToastSuccess('Promo berhasil dikirim melalui wa!');
-        // return redirect(route('kirim-wa.index'))->withToastSuccess('Data Berhasil Diubah!');
-        // toast('Reservasi Anda berhasil dibuat. Terima kasih', 'success', 'top-right');
-        return redirect()->route('kirim-wa.index');
+        alert()->success('Success', 'Promo berhasil dikirim melalui wa!');
+        return response()->json($response);
     }
 
 
@@ -89,6 +85,6 @@ class WAController extends Controller
             die("Connection Failure");
         }
         curl_close($curl);
-        return $result;
+        return json_decode($result, true);
     }
 }

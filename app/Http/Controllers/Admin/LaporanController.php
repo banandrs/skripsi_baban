@@ -5,10 +5,11 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\admin\role;
+use App\Model\Admin\Jadwal_foto;
 
-class ProductController extends Controller
+class LaporanController extends Controller
 {
- /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -25,8 +26,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $roles = role::all();
-        return view('admin.produk.show',compact('roles'));
+        $reservasis = Jadwal_foto::all();
+        return view('admin.laporan.index', compact('reservasis'));
     }
 
     /**

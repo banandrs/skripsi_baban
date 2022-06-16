@@ -16,7 +16,7 @@
         <div class="row align-items-center">
             <div class="col">
                 <h2 class="page-title">
-                    Promo
+                    Promo (Email)
                 </h2>
             </div>
         </div>
@@ -55,25 +55,20 @@
                                     </td>
                                     <td class="text-center">
                                         @if(is_null($promo->gambar))
-                                        <img src="{{ asset('background/background-default.jpg') }}"
-                                            alt="{{ $promo->promo }}" class="avatar me-2">
+                                        <img src="{{ asset('background/background-default.jpg') }}" alt="{{ $promo->promo }}" class="avatar me-2">
                                         @else
-                                        <img src="/gambar/{{ $promo->gambar }}" alt="{{ $promo->promo }}"
-                                            class="avatar me-2">
+                                        <img src="/gambar/{{ $promo->gambar }}" alt="{{ $promo->promo }}" class="avatar me-2">
                                         @endif
                                     </td>
                                     <td class="text-muted">
-                                        {{\Illuminate\Support\Str::limit($promo->keterangan, 50)}}  
+                                        {{\Illuminate\Support\Str::limit($promo->keterangan, 50)}}
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{ route('promo.edit',$promo->id) }}"
-                                            class="btn btn-success btn-sm">Sunting
+                                        <a href="{{ route('promo.edit',$promo->id) }}" class="btn btn-success btn-sm">Sunting
                                         </a>
-                                        <a href="{{ route('admin.email',$promo->id) }}"
-                                            class="btn btn-primary btn-sm">Kirim
+                                        <a href="{{ route('admin.email',$promo->id) }}" class="btn btn-primary btn-sm">Kirim
                                         </a>
-                                        <form id="delete-form-{{ $promo->id }}" method="post"
-                                            action="{{ route('promo.destroy',$promo->id) }}" style="display: none">
+                                        <form id="delete-form-{{ $promo->id }}" method="post" action="{{ route('promo.destroy',$promo->id) }}" style="display: none">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                         </form>
@@ -104,10 +99,10 @@
 <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.5/datatables.min.js"></script>
 <script>
-    $(document).ready( function () {
+    $(document).ready(function() {
         $('#example1').DataTable({
-          "dom": '<".card-body border-bottom py-3"<".d-flex"<".text-muted"l><".ms-auto text-muted"f>>>t<".card-footer d-flex align-items-center"<".m-0 text-muted"i><".pagination m-0 ms-auto"p>><"clear">'
+            "dom": '<".card-body border-bottom py-3"<".d-flex"<".text-muted"l><".ms-auto text-muted"f>>>t<".card-footer d-flex align-items-center"<".m-0 text-muted"i><".pagination m-0 ms-auto"p>><"clear">'
         });
-      });
+    });
 </script>
 @endsection

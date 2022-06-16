@@ -70,7 +70,6 @@
                   <th>Waktu</th>
                   <th>Catatan</th>
                   <th>Jumlah Bayar</th>
-                  <th width="15%"></th>
                 </tr>
               </thead>
               <tbody>
@@ -94,23 +93,6 @@
                   </td>
                   <td class="text-muted">
                     {{ rupiah($reservasi->paket->harga) }}
-                  </td>
-                  <td class="text-center">
-                    <a href="{{ route('reservasi.edit',$reservasi->slug) }}" class="btn btn-success btn-sm">Sunting
-                    </a>
-                    <form id="delete-form-{{ $reservasi->id }}" method="post" action="{{ route('reservasi.destroy',$reservasi->id) }}" style="display: none">
-                      {{ csrf_field() }}
-                      {{ method_field('DELETE') }}
-                    </form>
-                    <a href="" onclick="
-                      if(confirm('Are you sure, You Want to delete this?'))
-                      {
-                      event.preventDefault();
-                      document.getElementById('delete-form-{{ $reservasi->id }}').submit();
-                      }
-                      else{
-                      event.preventDefault();
-                    }" class="btn btn-danger btn-sm">Hapus</a>
                   </td>
                 </tr>
                 @empty
