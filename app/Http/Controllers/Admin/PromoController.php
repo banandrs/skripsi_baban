@@ -30,18 +30,20 @@ class PromoController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'judul'   => 'required',
-            'gambar'    => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'nama_promo'         => 'required',
+            'pekerjaan'     => 'required',
+            'gambar'        => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'keterangan'    => 'required'
         ]);
-
+        // dd($request);
         $image = $request->file('gambar');
         $jalurTujuan = public_path('/gambar/');
         $background  = date('YmdHis') . "." . $image->getClientOriginalExtension();
         $image->move($jalurTujuan, $background);
 
         $promo              = new Promo;
-        $promo->judul       = $request->judul;
+        $promo->nama_promo       = $request->nama_promo;
+        $promo->pekerjaan   = $request->pekerjaan;
         $promo->gambar      = $background;
         $promo->keterangan  = $request->keterangan;
         $promo->save();
@@ -57,12 +59,14 @@ class PromoController extends Controller
     {
         $this->validate($request, [
             'judul'   => 'required',
+            'pekerjaan'   => 'required',
             'gambar'    => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'keterangan'    => 'required'
         ]);
 
         $promo = Promo::find($id);
-        $promo->judul = $request->judul;
+        $promo->nama_promo = $request->nama_promo;
+        $promo->pekerjaan = $request->pekerjaan;
         if ($request->gambar != '') {
             $jalurTujuan = public_path('/gambar/');
 

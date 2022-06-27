@@ -44,6 +44,7 @@
                                         <th width="5%">#</th>
                                         <th>Judul</th>
                                         <th class="text-center">Gambar</th>
+                                        <th>Pekerjaan</th>
                                         <th>Keterangan</th>
                                         <th width="15%"></th>
                                     </tr>
@@ -53,7 +54,7 @@
                                         <tr>
                                             <td>{{ $loop->index + 1 }}.</td>
                                             <td class="text-muted">
-                                                {{ $promo->judul }}
+                                                {{ $promo->nama_promo }}
                                             </td>
                                             <td class="text-center">
                                                 @if (is_null($promo->gambar))
@@ -64,9 +65,11 @@
                                                         class="avatar me-2">
                                                 @endif
                                             </td>
+                                            <td>{{ $promo->pekerjaan }}</td>
                                             <td class="text-muted">
                                                 {{ \Illuminate\Support\Str::limit($promo->keterangan, 50) }}
                                             </td>
+
                                             <td class="text-center">
                                                 <a href="{{ route('promo.edit', $promo->id) }}"
                                                     class="btn btn-success btn-sm">Sunting

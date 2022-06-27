@@ -16,8 +16,9 @@ class CreatePromoTable extends Migration
         Schema::dropIfExists('promos');
         Schema::create('promos', function (Blueprint $table) {
             $table->increments('id');
+            $table->enum('pekerjaan', ['Siswa', 'Mahasiswa', 'Wiraswasta', 'ASN']);
             $table->string('nama_promo');
-            $table->string('harga');
+            // $table->string('harga');
             $table->string('gambar');
             $table->string('keterangan');
             $table->timestamps();
