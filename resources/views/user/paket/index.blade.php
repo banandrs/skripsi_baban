@@ -35,7 +35,7 @@
 		</div>
 		<div class="row">
 			@foreach ( $pakets as $paket )
-			<div class="col-md-3 ftco-animate">
+			<div class="col-md-3 ftco-animate mb-5">
 				<div class="pricing-entry pb-5 text-center">
 					<div>
 						<h3 class="mb-4">{{ $paket->paket }}</h3>

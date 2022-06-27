@@ -1,6 +1,10 @@
 <?php
 
 // User Routes
+
+use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Auth;
+
 Route::group(['namespace' => 'User'], function () {
 	Route::get('/', 'HomeController@index')->name('user.home');
 	Route::get('post/{post}', 'PostController@post')->name('post');

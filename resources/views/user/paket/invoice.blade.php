@@ -28,7 +28,7 @@ Paket Foto
     <div class="container ftco-relative">
         <div class="row justify-content-center pb-3">
             <div class="col-md-10 heading-section text-center ftco-animate fadeInUp ftco-animated">
-                <span class="subheading">Booking</span>
+                <span class="subheading">Reservasi</span>
 
                 <p>Paket Foto Terbaik Hanya untuk Kamu</p>
             </div>

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use App\Mail\MyTestMail;
 use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
@@ -30,54 +29,54 @@ class PromoController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'judul'   => 'required',
             'gambar'    => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'keterangan'    => 'required'
-            ]);
+        ]);
 
         $image = $request->file('gambar');
         $jalurTujuan = public_path('/gambar/');
-        $background  = date('YmdHis'). "." .$image->getClientOriginalExtension();
+        $background  = date('YmdHis') . "." . $image->getClientOriginalExtension();
         $image->move($jalurTujuan, $background);
-        
+
         $promo              = new Promo;
         $promo->judul       = $request->judul;
         $promo->gambar      = $background;
         $promo->keterangan  = $request->keterangan;
         $promo->save();
-        
+
         return redirect(route('promo.index'))->withToastSuccess('Data Berhasil Disimpan!');
     }
 
     public function edit(Promo $promo)
     {
-        return view('admin.promo.createOrUpdate',compact('promo'));
+        return view('admin.promo.createOrUpdate', compact('promo'));
     }
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'judul'   => 'required',
             'gambar'    => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'keterangan'    => 'required'
-            ]);
-        
+        ]);
+
         $promo = Promo::find($id);
         $promo->judul = $request->judul;
-        if($request->gambar != ''){
+        if ($request->gambar != '') {
             $jalurTujuan = public_path('/gambar/');
 
-            if($promo->gambar != '' && $promo->gambar != null){
-                $background_old = $jalurTujuan.$promo->gambar;
-                File::delete($background_old);         
+            if ($promo->gambar != '' && $promo->gambar != null) {
+                $background_old = $jalurTujuan . $promo->gambar;
+                File::delete($background_old);
             }
 
             $image = $request->file('gambar');
-            $background_new  = date('YmdHis'). "." .$image->getClientOriginalExtension();
+            $background_new  = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($jalurTujuan, $background_new);
             $promo->gambar = $background_new;
         }
-        
+
         $promo->keterangan = $request->keterangan;
         $promo->save();
 
@@ -86,20 +85,21 @@ class PromoController extends Controller
 
     public function destroy($id)
     {
-        $background = Promo::where('id',$id)->first();
-        File::delete('background/'.$background->gambar);
-        Promo::where('id',$id)->delete();
+        $background = Promo::where('id', $id)->first();
+        File::delete('background/' . $background->gambar);
+        Promo::where('id', $id)->delete();
         return redirect()->back();
     }
 
-    public function email($id){
+    public function email($id)
+    {
         $promo = Promo::find($id);
         $users = User::all();
-        foreach($users as $user){
+        foreach ($users as $user) {
             \Mail::to($user->email)->send(new \App\Mail\MyTestMail($promo));
-            
+            // \Mail::to($user->email)->send(new \App\Mail\MyTestMail($promo));
         }
-        toast('Pesan Sudah Dikirim Ke Email Pelanggan','success','top-right');
+        toast('Pesan Sudah Dikirim Ke Email Pelanggan', 'success', 'top-right');
         return redirect(route('promo.index'));
     }
 }

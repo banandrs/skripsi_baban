@@ -30,9 +30,10 @@ class MyTestMail extends Mailable
      */
     public function build()
     {
-        return $this->from('fvckingdude@gmail.com', 'Sinema Untan')
-                    ->with(['message' => $this])
-                    ->subject('Promo '.$this->promo->judul)
-                    ->view('admin.email.myTestMail');
+        // return $this->from('fvckingdude@gmail.com', 'Sinema Untan')
+        return $this->from('andreasnababan@student.untan.ac.id', 'Sinemaku')
+            ->with(['message' => $this])
+            ->subject('Promo ' . $this->promo->judul)
+            ->view('admin.email.myTestMail');
     }
 }

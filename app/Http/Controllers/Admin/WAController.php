@@ -32,8 +32,9 @@ class WAController extends Controller
             $params[] = ['receiver' => $user->no_hp, 'message' => $request->keterangan];
         }
         $data = json_encode($params);
-
+        // dd($params);
         $url = 'https://wa-restapi2.herokuapp.com/chats/send-bulk?id=' . $sender;
+
 
         # single
         // $data = json_encode([
@@ -46,7 +47,6 @@ class WAController extends Controller
         alert()->success('Success', 'Promo berhasil dikirim melalui wa!');
         return response()->json($response);
     }
-
 
     /**
      * Curl Kirim wa

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Admin\Jadwal_foto;
 use App\Model\User\User;
 use App\Model\User\Paket_foto;
+use App\Model\User\Pekerjaan;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -21,6 +22,7 @@ class PaketController extends Controller
     public function create($id)
     {
         $paket = Paket_foto::findOrFail($id);
+        // $users = Pekerjaan::users();
         return view('user.paket.create', compact('paket'));
     }
 
@@ -54,7 +56,7 @@ class PaketController extends Controller
             // return redirect(route('user.paket.invoice', ['id' => 1])->session->forget('paket_id'));
 
             return redirect()
-                ->route('user.paket.invoice', ['id' => 1])
+                ->route('user.paket.invoice', ['id' => 9])
                 ->with('message', 'Reservasi Anda berhasil dibuat. Terima kasih!');
         }
         // toast('Reservasi Anda berhasil dibuat. Terima kasih', 'success', 'top-right');

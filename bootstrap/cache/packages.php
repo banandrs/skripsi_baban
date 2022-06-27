@@ -1,4 +1,15 @@
 <?php return array (
+  'andyabih/laravel-to-uml' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Andyabih\\LaravelToUML\\LaravelToUMLServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'LaravelToUML' => 'Andyabih\\LaravelToUML\\Facades\\LaravelToUML',
+    ),
+  ),
   'barryvdh/laravel-debugbar' => 
   array (
     'providers' => 
