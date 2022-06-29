@@ -32,6 +32,7 @@ class PaketController extends Controller
             'email'     => 'required|unique:users',
             'tanggal'   => 'required',
             'waktu'     => 'required',
+            'pekerjaan'     => 'required',
         ]);
 
         if (Jadwal_foto::where(['tanggal' => $request->tanggal, 'waktu' => $request->waktu])->exists()) {

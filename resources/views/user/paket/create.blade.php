@@ -101,18 +101,13 @@
                             <div class="form-group">
                                 <div class="select-wrap">
                                     {{-- <div class="icon"><span class="ion-ios-arrow-down"></span></div> --}}
-                                    <select name="pekerjaan" id="" class="form-control">
-                                        {{-- <option disabled selected value="">--Pilih Pekerjaan--</option>
-                                        @foreach ($users as $key => $val)
-                                            <option value="{{ $key }}">{{ $val }}</option>
-                                        @endforeach --}}
-
+                                    <select name="pekerjaan" id="pekerjaan" class="form-control" required>
                                         <option disabled selected value="">Pilih Pekerjaan</option>
-                                        <option value="siswa">Siswa</option>
-                                        <option value="mahasiswa">Mahasiswa</option>
-                                        <option value="wiraswasta">Wiraswasta</option>
-                                        <option value="asn">ASN</option>
-                                        <option value="lainnya">Lainnya</option>
+                                        <option value="Siswa">Siswa</option>
+                                        <option value="Mahasiswa">Mahasiswa</option>
+                                        <option value="Wiraswasta">Wiraswasta</option>
+                                        <option value="ASN">ASN</option>
+                                        <option value="Lainnya">Lainnya</option>
                                     </select>
                                 </div>
                             </div>

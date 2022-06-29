@@ -42,7 +42,7 @@ class PromoController extends Controller
         $image->move($jalurTujuan, $background);
 
         $promo              = new Promo;
-        $promo->nama_promo       = $request->nama_promo;
+        $promo->nama_promo  = $request->nama_promo;
         $promo->pekerjaan   = $request->pekerjaan;
         $promo->gambar      = $background;
         $promo->keterangan  = $request->keterangan;
@@ -58,7 +58,7 @@ class PromoController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'judul'   => 'required',
+            'nama_promo'   => 'required',
             'pekerjaan'   => 'required',
             'gambar'    => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'keterangan'    => 'required'
