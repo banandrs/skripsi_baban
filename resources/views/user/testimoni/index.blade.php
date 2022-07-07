@@ -76,52 +76,25 @@
             </div>
             <h3 class="vr">Hubungi Kami: 012-3456-7890</h3>
             <div class="row justify-content-center">
-                <div class="col-md-10 ftco-animate">
+                <div class="col-md-6 ftco-animate">
+                    @if (session()->has('warning'))
+                        <div class="alert alert-warning text-center">
+                            {{ session()->get('warning') }}
+                        </div>
+                    @endif
                     @if (session()->has('message'))
                         <div class="alert alert-success text-center">
                             {{ session()->get('message') }}
                         </div>
                     @endif
-                    <form action="/testimoni/store" class="appointment-form" method="post">
+                    <form action="{{ route('testimoni.store.nohp') }}" class="appointment-form" method="post">
                         {{ csrf_field() }}
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <div class="form-group">
-                                    <input type="text" name="testimoni_nama" class="form-control" id="testimoni_nama"
-                                        placeholder="Nama" value="{{ !empty($user) ? $user->name : null }}">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input type="text" name="testimoni_pekerjaan" class="form-control"
-                                        id="testimoni_pekerjaan" placeholder="Email"
-                                        value="{{ !empty($user) ? $user->email : null }}">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <textarea name="testimoni_survei" id="testimoni_survei" cols="30" rows="7" class="form-control"
-                                        placeholder="Menurut saya sinemaku itu ..."></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="stars">
-                                    <input value="5" class="star star-5" id="star-5" type="radio"
-                                        name="rating" />
-                                    <label class="star star-5" for="star-5"></label>
-                                    <input value="4" class="star star-4" id="star-4" type="radio"
-                                        name="rating" />
-                                    <label class="star star-4" for="star-4"></label>
-                                    <input value="3" class="star star-3" id="star-3" type="radio"
-                                        name="rating" />
-                                    <label class="star star-3" for="star-3"></label>
-                                    <input value="2" class="star star-2" id="star-2" type="radio"
-                                        name="rating" />
-                                    <label class="star star-2" for="star-2"></label>
-                                    <input value="1
-								" class="star star-1" id="star-1" type="radio"
-                                        name="rating" />
-                                    <label class="star star-1" for="star-1"></label>
+                                    <input type="number" oninput="this.value=this.value.slice(0,this.maxLength)"
+                                        name="no_hp" class="form-control" id="no_hp" placeholder="Masukan no hp.."
+                                        maxlength="15" required>
                                 </div>
                             </div>
                         </div>

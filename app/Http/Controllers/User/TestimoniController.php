@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\User\Testimoni;
+use App\Model\User\User;
 
 class TestimoniController extends Controller
 {
@@ -16,7 +17,35 @@ class TestimoniController extends Controller
     public function index()
     {
         $testimonis = Testimoni::all();
-        return view('user.testimoni.testimoni', compact('testimonis'));
+        return view('user.testimoni.index', compact('testimonis'));
+        // return view('user.testimoni.testimoni', compact('testimonis'));
+    }
+
+    public function storeNoHp(Request $request)
+    {
+        $nohp = phoneFormat($request->no_hp);
+        try {
+            $users = User::where('no_hp', $nohp)->first();
+
+            if (!$users) {
+                return redirect()->back()
+                    ->with('warning', 'Anda belum pernah melakukan booking, silahkan lakukan booking. Terimakasih!');
+            }
+
+            return redirect('testimoni/create?nohp=' . $nohp)->with('message', 'Anda pernah melakukan booking, silahkan menilai kami untuk meningkatkan kualitas pelayanan. Terimakasih!');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    /**  */
+    public function testimonial(Request $request)
+    {
+        $nohp = $request->get('nohp');
+        $user = User::where('no_hp', $nohp)->first();
+        // dd($request->get('nohp'));
+        $testimonis = Testimoni::all();
+        return view('user.testimoni.testimoni', compact('testimonis', 'user'));
     }
 
     /**
@@ -37,7 +66,7 @@ class TestimoniController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'testimoni_nama'      => 'required',
             'testimoni_pekerjaan' => 'required',
             'testimoni_survei'    => 'required'
@@ -50,7 +79,7 @@ class TestimoniController extends Controller
             'rating'    => $request->rating
         ]);
 
-        return redirect('testimoni');
+        return redirect('testimoni')->with('message', 'Terimakasih telah mengisi testimoni.');
     }
 
     /**

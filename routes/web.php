@@ -2,7 +2,8 @@
 
 // User Routes
 
-use Illuminate\Routing\Route;
+// use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 Route::group(['namespace' => 'User'], function () {
@@ -36,6 +37,9 @@ Route::group(['namespace' => 'User'], function () {
 
 	Route::get('testimoni', 'TestimoniController@index')->name('user.testimoni');
 	Route::post('testimoni/store', 'TestimoniController@store');
+	// masukan no hp untuk mengisi testimoni
+	Route::post('testimoni/store-nohp', 'TestimoniController@storeNoHp')->name('testimoni.store.nohp');
+	Route::get('testimoni/create', 'TestimoniController@testimonial')->name('testimonial.create');
 
 	Route::get('kontak', 'KontakController@index')->name('user.kontak');
 });
