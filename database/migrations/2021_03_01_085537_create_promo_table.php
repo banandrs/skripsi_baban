@@ -21,6 +21,7 @@ class CreatePromoTable extends Migration
             // $table->string('harga');
             $table->string('gambar');
             $table->string('keterangan');
+            $table->dateTime('send_at')->nullable();
             $table->timestamps();
         });
     }

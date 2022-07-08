@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: May 15, 2022 at 04:06 PM
--- Server version: 5.7.33
--- PHP Version: 7.2.34
+-- Host: 127.0.0.1
+-- Generation Time: Jul 08, 2022 at 04:03 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,7 +43,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `password`, `phone`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@admin.com', '$2y$10$JtMiQhN5TV1.s5Tf0rbTSOlMYvQhmErv8q8pPXvh9uIymqGiDhwi.', '082358177119', 1, '2021-09-16 02:32:31', '2021-09-22 02:32:31'),
+(1, 'Admin', 'admin@admin.com', '$2y$10$zv6TNkhhB5qejcq9lqjFfuQaxymXeP/6xzBnL7VhbUIQ4FjJJDDYe', '6282358177119', 1, '2021-09-16 02:32:31', '2022-06-06 09:10:38'),
 (2, 'Manajer', 'manajer@manajer.com', '$2y$10$JtMiQhN5TV1.s5Tf0rbTSOlMYvQhmErv8q8pPXvh9uIymqGiDhwi.', '', 1, '2022-04-19 08:09:01', '2022-04-19 08:09:01');
 
 -- --------------------------------------------------------
@@ -92,10 +92,6 @@ CREATE TABLE `admin_roles` (
 
 CREATE TABLE `bookings` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `paket_id` bigint(20) UNSIGNED NOT NULL,
-  `pelanggan_id` bigint(20) UNSIGNED NOT NULL,
-  `tanggal` date NOT NULL,
-  `waktu` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -109,7 +105,7 @@ CREATE TABLE `bookings` (
 CREATE TABLE `galeris` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `judul` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gambar` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gambar` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `kategori` enum('indoor','outdoor') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'indoor',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -120,8 +116,14 @@ CREATE TABLE `galeris` (
 --
 
 INSERT INTO `galeris` (`id`, `judul`, `gambar`, `kategori`, `created_at`, `updated_at`) VALUES
-(1, 'Galeri 1', '20220421061025.jpg', 'indoor', '2022-04-20 23:10:25', '2022-04-20 23:10:25'),
-(2, 'Gambar 2', '20220421061651.jpg', 'outdoor', '2022-04-20 23:16:51', '2022-04-20 23:16:51');
+(7, 'Foto 1', '20220518093039.JPG', 'indoor', '2022-05-18 02:30:39', '2022-05-29 22:45:54'),
+(10, 'Foto 2', '20220530070445.jpg', 'indoor', '2022-05-29 22:42:39', '2022-05-30 00:04:45'),
+(11, 'Foto 3', '20220530054413.jpg', 'indoor', '2022-05-29 22:44:13', '2022-05-29 22:44:13'),
+(12, 'Foto 4', '20220530065619.jpg', 'indoor', '2022-05-29 22:45:32', '2022-05-29 23:56:19'),
+(13, 'Foto 5', '20220530064332.JPG', 'outdoor', '2022-05-29 23:43:32', '2022-05-29 23:43:32'),
+(14, 'Foto 6', '20220530064425.jpg', 'outdoor', '2022-05-29 23:44:25', '2022-05-29 23:44:25'),
+(15, 'Foto 7', '20220530064520.jpg', 'outdoor', '2022-05-29 23:45:20', '2022-05-29 23:45:20'),
+(16, 'Foto 8', '20220530065535.jpg', 'outdoor', '2022-05-29 23:46:26', '2022-05-29 23:55:35');
 
 -- --------------------------------------------------------
 
@@ -136,11 +138,25 @@ CREATE TABLE `jadwal_fotos` (
   `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tanggal` date DEFAULT NULL,
   `waktu` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `catatan` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jumlah_bayar` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `catatan` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `jumlah_bayar` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `jadwal_fotos`
+--
+
+INSERT INTO `jadwal_fotos` (`id`, `paket_id`, `user_id`, `slug`, `tanggal`, `waktu`, `catatan`, `jumlah_bayar`, `created_at`, `updated_at`) VALUES
+(8, 40, 18, '2022-06-18', '2022-06-18', '11.30 WIB', NULL, NULL, '2022-06-16 05:36:15', '2022-06-16 05:36:15'),
+(9, 34, 20, '2022-06-17', '2022-06-17', '09.30 WIB', NULL, NULL, '2022-06-16 11:07:11', '2022-06-16 11:07:11'),
+(12, 38, 23, '2022-06-17', '2022-06-17', '13.00 WIB', NULL, NULL, '2022-06-16 11:22:00', '2022-06-16 11:22:00'),
+(13, 41, 24, '2022-06-18', '2022-06-18', '13.30 WIB', NULL, NULL, '2022-06-16 11:33:48', '2022-06-16 11:33:48'),
+(14, 40, 25, '2022-06-17', '2022-06-17', '16.00 WIB', NULL, NULL, '2022-06-16 11:37:52', '2022-06-16 11:37:52'),
+(15, 38, 26, '2022-06-23', '2022-06-23', '10.30 WIB', NULL, NULL, '2022-06-23 08:22:04', '2022-06-23 08:22:04'),
+(16, 36, 27, '2022-06-29', '2022-06-29', '10.30 WIB', NULL, NULL, '2022-06-29 01:01:38', '2022-06-29 01:01:38'),
+(18, 34, 29, '2022-06-29', '2022-06-29', '20.30 WIB', NULL, NULL, '2022-06-29 13:34:05', '2022-06-29 13:34:05');
 
 -- --------------------------------------------------------
 
@@ -214,9 +230,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (95, '2020_02_22_104008_create_paket_fotos_table', 3),
 (96, '2020_02_23_021619_create_jadwal_fotos_table', 3),
 (97, '2020_03_09_081623_create_log_activity_table', 3),
-(98, '2021_03_01_085537_create_promo_table', 3),
 (99, '2022_03_04_141204_create_pelanggans_table', 4),
-(100, '2022_04_19_081134_create_galeris_table', 4);
+(100, '2022_04_19_081134_create_galeris_table', 4),
+(101, '2022_05_05_141051_create_bookings_table', 5),
+(105, '2021_03_01_085537_create_promo_table', 6);
 
 -- --------------------------------------------------------
 
@@ -244,13 +261,14 @@ CREATE TABLE `paket_fotos` (
 --
 
 INSERT INTO `paket_fotos` (`id`, `paket`, `paket_slug`, `harga`, `kapasitas`, `durasi`, `background`, `cetak_foto`, `file_foto`, `keterangan`, `created_at`, `updated_at`) VALUES
-(24, 'Santai saja', 'santai-saja', '4545', '10', '3 Jam', NULL, 'lasjdfl', ';lakjsdfl;', 'lajsdlfkasdf', '2021-09-28 05:06:20', '2021-09-28 05:06:20'),
-(26, 'Baru Saja', 'baru-saja', '10000', '10', '1 jam', '20211012080811.png', 'Kosong', 'Kosong', 'null', '2021-10-11 23:54:17', '2021-10-12 01:08:11'),
-(28, 'Baru Saja', 'baru-saja', '100000', '12', '2 Jam', '20211012080323.png', 'Kosong', ';lakjsdfl;', 'asdf', '2021-10-12 01:03:23', '2021-10-12 01:03:23'),
-(29, 'kosong saja', 'tidak-boleh-samah', '123', '10', '2 Jam', '20211012081007.png', 'ksoogn', '123132', 'asdf', '2021-10-12 01:09:20', '2021-10-12 01:12:37'),
-(30, 'Terbaru', 'terbaru', '10000', '10', '1 Jam', '20220304075722.jpg', 'Kosong', 'Kosong', 'Keterangan Paket', '2022-03-04 00:57:22', '2022-03-04 00:57:22'),
-(32, 'Keluarga', 'keluarga', '100000', '10', '1 Jam', '20220314065452.jpg', 'Kosong', 'Kosong', 'Ini masih contoh paket', '2022-03-13 23:54:52', '2022-03-13 23:54:52'),
-(33, 'Terbaru', 'terbaru', '100000', '10', '3 jam', '20220314070040.jpg', 'Kosong', 'Kosong', 'Hiya', '2022-03-14 00:00:40', '2022-03-14 00:00:40');
+(34, 'Paket 1', 'paket-1', '100000', '5', '30 Menit', '20220530051753.jpg', '2 Cetak Foto (8R & 12R)', '1 CD Softcopy All Files', 'Indoor Wisudawan + Keluarga', '2022-05-29 22:17:53', '2022-05-29 22:17:53'),
+(35, 'Paket 2', 'paket-2', '200000', '5', '30 Menit', '20220530052121.jpg', '1 Cetak Foto 12R + Frame', '1 CD Softcopy All Files', 'Indoor Wisudawan + Keluarga', '2022-05-29 22:21:21', '2022-05-29 22:21:21'),
+(36, 'Paket 3', 'paket-3', '200000', '10', '30 Menit', '20220530052256.jpg', '2 Cetak Foto (8R & 12R)', '1 CD Softcopy All Files', 'Indoor Se-Group/Angkatan/Kampus', '2022-05-29 22:22:56', '2022-05-29 22:22:56'),
+(37, 'Paket 4', 'paket-4', '275000', '10', '30 Menit', '20220530052451.jpg', '2 Cetak Foto (8R & 12R)', '1 CD Softcopy All Files', 'Indoor/Outdoor Wisudawan Group/Angkatan', '2022-05-29 22:24:51', '2022-06-16 10:52:06'),
+(38, 'Paket 5', 'paket-5', '600000', '25', '60 Menit', '20220530053219.jpg', '2 Cetak Foto (8R & 12R)', '1 CD Softcopy All Files', 'Outdoor Se-Group/Angkatan/Kampus (4 Spot)', '2022-05-29 22:32:19', '2022-05-29 22:34:43'),
+(39, 'Paket 6', 'paket-6', '50000', '10', '30 Menit', '20220530053415.jpg', 'No Printed', 'Softcopy All Files', 'Foto Selfie 360° Se-Group/Angkatan/Kampus (Samsung Gear 360°)', '2022-05-29 22:34:15', '2022-05-29 22:34:15'),
+(40, 'Paket 7', 'paket-7', '250000', '5', '30 Menit', '20220530053653.jpg', '2 Cetak Foto (8R & 12R)', '1 CD Softcopy All Files', 'Indoor Wisudawan + Keluarga', '2022-05-29 22:36:53', '2022-05-29 22:36:53'),
+(41, 'Paket 8', 'paket-8', '350000', '5', '60 Menit', '20220530053917.jpg', '3 Cetak Foto (12R)', '1 CD Softcopy All Files', 'Outdoor Wisudawan + Keluarga (3 Spot)', '2022-05-29 22:39:17', '2022-05-29 22:39:17');
 
 -- --------------------------------------------------------
 
@@ -331,9 +349,12 @@ INSERT INTO `permission_role` (`role_id`, `permission_id`) VALUES
 (1, 14),
 (1, 15),
 (1, 16),
-(1, 17),
 (1, 18),
-(2, 2);
+(2, 2),
+(1, 19),
+(2, 16),
+(2, 17),
+(2, 18);
 
 -- --------------------------------------------------------
 
@@ -364,10 +385,11 @@ CREATE TABLE `posts` (
 
 CREATE TABLE `promos` (
   `id` int(10) UNSIGNED NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `judul` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `gambar` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `keterangan` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pekerjaan` enum('Siswa','Mahasiswa','Wiraswasta','ASN') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_promo` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gambar` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `keterangan` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `send_at` datetime DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -376,9 +398,10 @@ CREATE TABLE `promos` (
 -- Dumping data for table `promos`
 --
 
-INSERT INTO `promos` (`id`, `user_id`, `judul`, `gambar`, `keterangan`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Promo Terbaru', 'background-default.jpg', 'Promo terbaru gratis foto', '2022-03-14 13:39:05', '2022-03-14 13:39:05'),
-(2, NULL, 'Promo Gratis', '20220314140900.jpg', 'Lagi Promo Gratis', '2022-03-14 07:09:00', '2022-03-14 07:09:00');
+INSERT INTO `promos` (`id`, `pekerjaan`, `nama_promo`, `gambar`, `keterangan`, `send_at`, `created_at`, `updated_at`) VALUES
+(1, 'Mahasiswa', 'mahasiswa', '20220708154522.jpg', 'Hallo Sobat Sarjana!\r\n\r\nSelamat wisuda ya.\r\nDimomen sebahagia ini kamu bingung ingin berfoto bersama keluarga? Atau bingung harus memilih ingin foto indoor atau outdoor?\r\n\r\nTahukah kamu di studio foto Sinema Untan kamu bisa dapatkan jawabannya. \r\nKami hadir untuk memberikan rekomendasi apa aja paket foto seru yang bisa kamu dapatkan. Kamu bebas pilih paket foto indoor atau pun outdoor.\r\nBiar hari-harimu makin seru, yuk #FotoBersamaSinemaku untuk melihat paket foto terseru dan menarik yang bisa kamu dapatkan. Yuk buruan reservasi sekarang!\r\n\r\nhttps://baban.demi-toga.com/paket-foto', NULL, '2022-06-27 10:20:09', '2022-07-08 08:45:22'),
+(2, 'ASN', 'Awal Bulan Kece', '20220708155929.jpg', 'Hallo sobat pejuang rupiah!\r\n\r\nSelamat gajian ya.\r\nDimomen sebahagia ini kamu bingung ingin berfoto bersama keluarga? Atau bingung harus memilih ingin foto indoor atau outdoor?\r\n\r\nTahukah kamu di studio foto Sinema Untan kamu bisa dapatkan jawabannya. \r\nKami hadir untuk memberikan rekomendasi apa aja paket foto seru yang bisa kamu dapatkan. Kamu bebas pilih paket foto indoor atau pun outdoor.\r\nBiar hari-harimu makin seru, yuk #FotoBersamaSinemaku untuk melihat paket foto terseru dan menarik yang bisa kamu dapatkan. Yuk buruan reservasi sekarang!\r\n\r\nhttps://baban.demi-toga.com/paket-foto', '2022-07-08 16:00:00', '2022-06-28 07:43:48', '2022-07-08 08:59:29'),
+(3, 'Wiraswasta', 'Merdeka Dalam Bergaya', '20220628144655.png', 'Hallo sobatku!\r\n\r\nSelamat merayakan Hari Raya Kemerdekaan Indonesia.\r\nDimomen sebahagia ini kamu bingung ingin berfoto bersama keluarga? Atau bingung harus memilih ingin foto indoor atau outdoor?\r\n\r\nTahukah kamu di studio foto Sinema Untan kamu bisa dapatkan jawabannya. \r\nKami hadir untuk memberikan rekomendasi apa aja paket foto seru yang bisa kamu dapatkan. Kamu bebas pilih paket foto indoor atau pun outdoor.\r\nBiar hari-harimu makin seru, yuk #FotoBersamaSinemaku untuk melihat paket foto terseru dan menarik yang bisa kamu dapatkan. Yuk buruan reservasi sekarang!\r\n\r\nhttps://baban.demi-toga.com/paket-foto', NULL, '2022-06-28 07:46:55', '2022-06-28 07:46:55');
 
 -- --------------------------------------------------------
 
@@ -426,7 +449,8 @@ INSERT INTO `testimonis` (`id`, `nama`, `pekerjaan`, `survei`, `rating`, `create
 (2, 'Dani Kusmeiyadi', 'Mahasiswa', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '2', '2021-05-01 08:54:52', '2021-05-01 08:54:52'),
 (3, 'Dani Kusmeiyadi', 'Mahasiswa', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '3', '2021-05-01 08:55:21', '2021-05-01 08:55:21'),
 (4, 'Andreas Nababan', 'Mahasiswa', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '5', '2021-05-01 08:56:21', '2021-05-01 08:56:21'),
-(5, 'Yoko Bertu', 'Mahasiswa', 'Menurut saya sinemakoe itu', '4', '2021-05-04 00:13:26', '2021-05-04 00:13:26');
+(5, 'Yoko Bertu', 'Mahasiswa', 'Menurut saya sinemakoe itu', '4', '2021-05-04 00:13:26', '2021-05-04 00:13:26'),
+(6, 'yoko', 'yokobertu@gmail.com', 'Pelayanan sudah baik.', '4', '2022-06-16 05:33:45', '2022-06-16 05:33:45');
 
 -- --------------------------------------------------------
 
@@ -439,6 +463,8 @@ CREATE TABLE `users` (
   `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `no_hp` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `umur` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pekerjaan` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -447,10 +473,16 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `no_hp`, `created_at`, `updated_at`) VALUES
-(4, 'Dani Kusmeiyadi', 'kusmeiyadi@gmail.com', '082358177119', '2022-03-15 15:49:15', '2022-03-15 15:49:15'),
-(5, 'Sisi Pravidya', 'sisipravidya89@gmail.com', '08565656954', NULL, NULL),
-(6, 'Andreas Nababan', 'andreasnababan1214@gmail.com', '08565656954', NULL, NULL);
+INSERT INTO `users` (`id`, `name`, `email`, `no_hp`, `umur`, `pekerjaan`, `created_at`, `updated_at`) VALUES
+(6, 'Andreas Nababan', 'andreasbaban14@gmail.com', '6285750058435', '3', 'Lainnya', NULL, NULL),
+(18, 'Dani Kusmeiyadi', 'kusmeiyadi@gmail.com', '6282358177119', '3', 'Siswa', '2022-06-16 05:36:15', '2022-06-16 05:36:15'),
+(20, 'Eko Murdianto P.', 'murprakoso@gmail.com', '6289524432340', '4', 'ASN', '2022-06-16 11:07:11', '2022-06-16 11:07:11'),
+(23, 'Rendy D.A.P', 'rendyboyz@gmail.com', '6289601212646', '4', 'Wiraswasta', '2022-06-16 11:22:00', '2022-06-16 11:22:00'),
+(24, 'yoko', 'yokobertu@gmail.com', '6281257466118', '1', 'Mahasiswa', '2022-06-16 11:33:48', '2022-06-16 11:33:48'),
+(25, 'Luiz Dias', 'andreasnababan1214@gmail.com', '6285750058412', '3', 'ASN', '2022-06-16 11:37:52', '2022-06-16 11:37:52'),
+(26, 'Hakim Fajar', 'hakimfajar6@student.untan.ac.id', '62895329499092', '2', 'Mahasiswa', '2022-06-23 08:22:04', '2022-06-23 08:22:04'),
+(27, 'Fransisca Osela', 'fransiscaosela@gmail.com', '6282153197722', '1', 'Siswa', '2022-06-29 01:01:38', '2022-06-29 01:01:38'),
+(29, 'bans', 'babang@gmail.com', '627897987', '2', 'Lainnya', '2022-06-29 13:34:05', '2022-06-29 13:34:05');
 
 --
 -- Indexes for dumped tables
@@ -479,8 +511,7 @@ ALTER TABLE `admin_roles`
 -- Indexes for table `bookings`
 --
 ALTER TABLE `bookings`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `bookings_paket_id_foreign` (`paket_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `galeris`
@@ -602,13 +633,13 @@ ALTER TABLE `bookings`
 -- AUTO_INCREMENT for table `galeris`
 --
 ALTER TABLE `galeris`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `jadwal_fotos`
 --
 ALTER TABLE `jadwal_fotos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `likes`
@@ -626,13 +657,13 @@ ALTER TABLE `log_activities`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT for table `paket_fotos`
 --
 ALTER TABLE `paket_fotos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `pelanggans`
@@ -656,7 +687,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `promos`
 --
 ALTER TABLE `promos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -668,23 +699,17 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `testimonis`
 --
 ALTER TABLE `testimonis`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `bookings`
---
-ALTER TABLE `bookings`
-  ADD CONSTRAINT `bookings_paket_id_foreign` FOREIGN KEY (`paket_id`) REFERENCES `paket_fotos` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `jadwal_fotos`
