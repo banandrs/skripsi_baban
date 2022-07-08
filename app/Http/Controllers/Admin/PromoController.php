@@ -52,7 +52,11 @@ class PromoController extends Controller
         $promo->send_at     = $sendAt;
         $promo->save();
 
-        return redirect(route('promo.index'))->withToastSuccess('Data Berhasil Disimpan!');
+        if ($request->redirect_url == 'email') {
+            return redirect(route('promo.index'))->withToastSuccess('Data Berhasil Disimpan!');
+        } else {
+            return redirect('/admin/kirim-wa')->withToastSuccess('Data Berhasil Disimpan!');
+        }
     }
 
     public function edit(Promo $promo)
@@ -91,7 +95,12 @@ class PromoController extends Controller
         $promo->keterangan = $request->keterangan;
         $promo->save();
 
-        return redirect(route('promo.index'))->withToastSuccess('Data Berhasil Diperbarui!');
+        // return redirect(route('promo.index'))->withToastSuccess('Data Berhasil Diperbarui!');
+        if ($request->redirect_url == 'email') {
+            return redirect(route('promo.index'))->withToastSuccess('Data Berhasil Diperbarui!');
+        } else {
+            return redirect('/admin/kirim-wa')->withToastSuccess('Data Berhasil Diperbarui!');
+        }
     }
 
     public function destroy($id)

@@ -10,8 +10,7 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.8.0",
         "maatwebsite/excel": "^3.1",
-        "realrashid/sweet-alert": "3.0",
-        "spatie/laravel-short-schedule": "^0.0"
+        "realrashid/sweet-alert": "3.0"
     },
     "require-dev": {
         "andyabih/laravel-to-uml": "^1.0",

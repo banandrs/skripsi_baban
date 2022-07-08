@@ -32,7 +32,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Promo</h3>
                             <div class="ms-auto">
-                                <a class="btn btn-primary btn-sm" href="{{ route('promo.create') }}">
+                                <a class="btn btn-primary btn-sm" href="{{ url('admin/promo/create?with=email') }}">
                                     Tambah
                                 </a>
                             </div>

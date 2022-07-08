@@ -59,7 +59,7 @@ const job = new CronJob(
                             })
                         })
 
-                        let url = `https://wa-restapi2.herokuapp.com/chats/send?id=${sender}`
+                        let url = `https://wa-restapi2.herokuapp.com/chats/send-bulk?id=${sender}`
                         // send wa
                         await axios
                             .post(url, params)

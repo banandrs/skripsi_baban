@@ -16,21 +16,22 @@ class PelangganController extends Controller
     public function index()
     {
         $pelanggans = User::all();
-        return view('admin.pelanggan.index',compact('pelanggans'));
+        return view('admin.pelanggan.index', compact('pelanggans'));
     }
 
-    public function edit(User $pelanggan){
-        return view('admin.pelanggan.createOrUpdate',compact('pelanggan'));
+    public function edit(User $pelanggan)
+    {
+        return view('admin.pelanggan.createOrUpdate', compact('pelanggan'));
     }
 
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'name'=>'required',
+        $this->validate($request, [
+            'name' => 'required',
             'email' => 'required',
             'no_hp' => 'required'
-            ]);
-        
+        ]);
+
         $pelanggan = User::find($id);
         $pelanggan->name = $request->name;
         $pelanggan->email = $request->email;
@@ -38,5 +39,14 @@ class PelangganController extends Controller
         $pelanggan->save();
 
         return redirect(route('pelanggan.index'))->withToastSuccess('Data Berhasil Disimpan!');
+    }
+
+    public function destroy($id)
+    {
+        // dd($id);
+        $user = User::find($id);
+        // dd($user);
+        $user->delete();
+        return redirect()->back()->withToastSuccess('Data Berhasil Dihapus!');
     }
 }

@@ -109,9 +109,28 @@
                                                 {{ $pelanggan->no_hp }}
                                             </td>
                                             <td class="text-center">
-                                                <a href="{{ route('pelanggan.edit', $pelanggan->id) }}"
+                                                <form id="delete-form-{{ $pelanggan->id }}" method="post"
+                                                    action="{{ route('pelanggan.destroy', $pelanggan->id) }}"
+                                                    style="display: none">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('DELETE') }}
+                                                </form>
+                                                <a href=""
+                                                    onclick="
+                                                    if(confirm('Are you sure, You Want to delete this?'))
+                                                    {
+                                                    event.preventDefault();
+                                                    document.getElementById('delete-form-{{ $pelanggan->id }}').submit();
+                                                    }
+                                                    else{
+                                                    event.preventDefault();
+                                                  }"
+                                                    class="btn btn-danger btn-sm">Hapus</a>
+
+
+                                                {{-- <a href="{{ route('pelanggan.edit', $pelanggan->id) }}"
                                                     class="btn btn-success btn-sm">Sunting
-                                                </a>
+                                                </a> --}}
                                             </td>
                                         </tr>
                                     @endforeach

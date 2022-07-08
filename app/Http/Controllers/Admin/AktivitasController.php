@@ -5,10 +5,11 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\admin\logActivity;
+use App\Model\User\Testimoni;
 
 class AktivitasController extends Controller
 {
-     /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -26,7 +27,7 @@ class AktivitasController extends Controller
     public function index()
     {
         $logs = \LogActivity::logActivityLists();
-        return view('admin.aktivitas.index',compact('logs'));
+        return view('admin.aktivitas.index', compact('logs'));
     }
 
     /**
@@ -35,9 +36,7 @@ class AktivitasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function logActivity()
-    {
-        
-    }
+    { }
 
     /**
      * Show the form for creating a new resource.
@@ -102,7 +101,7 @@ class AktivitasController extends Controller
      */
     public function destroy($id)
     {
-        \LogActivity::where('id',$id)->delete();
+        Testimoni::where('id', $id)->delete();
         return redirect()->back();
     }
 }

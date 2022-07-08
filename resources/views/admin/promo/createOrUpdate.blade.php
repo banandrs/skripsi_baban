@@ -19,10 +19,16 @@
             <div class="row row-cards">
                 <div class="col-12">
                     @if (isset($promo))
-                        {!! Form::model($promo, ['route' => ['promo.update', $promo->id], 'method' => 'patch', 'files' => true, 'class' => 'card']) !!}
+                        {!! Form::model($promo, [
+                            'route' => ['promo.update', $promo->id],
+                            'method' => 'patch',
+                            'files' => true,
+                            'class' => 'card',
+                        ]) !!}
                     @else
                         {!! Form::open(['route' => 'promo.store', 'files' => true, 'class' => 'card']) !!}
                     @endif
+                    {{ Form::hidden('redirect_url', request()->get('with')) }}
                     @if (isset($promo))
                         <div class="card-header">
                             <h4 class="card-title">Sunting Promo</h4>
@@ -39,7 +45,11 @@
                                     <div class="col-md-12 col-xl-12">
                                         <div class="mb-3">
                                             {!! Form::label('nama_promo', 'Nama Promo', ['class' => 'form-label']) !!}
-                                            {!! Form::text('nama_promo', null, ['id' => 'nama_promo', 'class' => 'form-control', 'placeholder' => 'Nama Promo']) !!}
+                                            {!! Form::text('nama_promo', null, [
+                                                'id' => 'nama_promo',
+                                                'class' => 'form-control',
+                                                'placeholder' => 'Nama Promo',
+                                            ]) !!}
                                             {{-- <input type="text" name="nama_promo" value="{{ old('nama_promo') }}"
                                                 placeholder="Masukkan Nama Akun" class="form-control" required> --}}
 
@@ -69,18 +79,23 @@
                                         </div>
                                         <div class="mb-3">
                                             {!! Html::decode(
-    Form::label(
-        'keterangan',
-        'Keterangan Promo
-                                                                                    <span class="form-label-description">
-                                                                                        <span id="current" style="margin-right: -4px;">0</span>
-                                                                                        <span id="maximum">/100</span>
-                                                                                    </span>
-                                                                                    ',
-        ['id' => 'the-count', 'class' => 'form-label'],
-    ),
-) !!}
-                                            {!! Form::textarea('keterangan', Input::old('keterangan'), ['id' => 'keterangan_paket', 'class' => 'form-control', 'placeholder' => 'Keterangan Paket', 'rows' => '6']) !!}
+                                                Form::label(
+                                                    'keterangan',
+                                                    'Keterangan Promo
+                                                                                                                                                                                                                                                                                                                <span class="form-label-description">
+                                                                                                                                                                                                                                                                                                                    <span id="current" style="margin-right: -4px;">0</span>
+                                                                                                                                                                                                                                                                                                                    <span id="maximum">/100</span>
+                                                                                                                                                                                                                                                                                                                </span>
+                                                                                                                                                                                                                                                                                                                ',
+                                                    ['id' => 'the-count', 'class' => 'form-label'],
+                                                ),
+                                            ) !!}
+                                            {!! Form::textarea('keterangan', Input::old('keterangan'), [
+                                                'id' => 'keterangan_paket',
+                                                'class' => 'form-control',
+                                                'placeholder' => 'Keterangan Paket',
+                                                'rows' => '6',
+                                            ]) !!}
                                         </div>
 
                                         <div class="mb-3 row">
@@ -92,6 +107,7 @@
                                                 {!! Form::time('time', null, ['id' => 'time', 'class' => 'form-control', 'placeholder' => 'Jam']) !!}
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -102,16 +118,16 @@
                             <a href="{{ url('/admin/promo') }}" class="btn btn-secondary">Batal</a>
                             @if (isset($paket))
                                 {!! Form::submit('Perbaharui', [
-    'name' => 'simpan',
-    'class' => 'btn btn-success
-                        ms-auto',
-]) !!}
+                                    'name' => 'simpan',
+                                    'class' => 'btn btn-success
+                                                                                                                                                                                        ms-auto',
+                                ]) !!}
                             @else
                                 {!! Form::submit('Simpan', [
-    'name' => 'simpan',
-    'class' => 'btn btn-success
-                        ms-auto',
-]) !!}
+                                    'name' => 'simpan',
+                                    'class' => 'btn btn-success
+                                                                                                                                                                                        ms-auto',
+                                ]) !!}
                             @endif
                         </div>
                     </div>
