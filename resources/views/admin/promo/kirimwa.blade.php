@@ -46,6 +46,7 @@
                                         <th class="text-center">Gambar</th>
                                         <th>Pekerjaan</th>
                                         <th>Keterangan</th>
+                                        <th>Jadwal Kirim</th>
                                         <th width="15%"></th>
                                     </tr>
                                 </thead>
@@ -69,7 +70,9 @@
                                             <td class="text-muted">
                                                 {{ \Illuminate\Support\Str::limit($promo->keterangan, 50) }}
                                             </td>
-
+                                            <td>
+                                                {{ !empty($promo->send_at) ? date('d M Y, H:i', strtotime($promo->send_at)) : null }}
+                                            </td>
                                             <td class="text-center">
                                                 <a href="{{ route('promo.edit', $promo->id) }}"
                                                     class="btn btn-success btn-sm">Sunting

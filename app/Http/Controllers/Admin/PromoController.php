@@ -30,10 +30,11 @@ class PromoController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama_promo'         => 'required',
-            'pekerjaan'     => 'required',
-            'gambar'        => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'keterangan'    => 'required'
+            'nama_promo' => 'required',
+            'pekerjaan'  => 'required',
+            'gambar'     => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'keterangan' => 'required',
+            'send_at'    => 'nullable'
         ]);
         // dd($request);
         $image = $request->file('gambar');
@@ -46,6 +47,9 @@ class PromoController extends Controller
         $promo->pekerjaan   = $request->pekerjaan;
         $promo->gambar      = $background;
         $promo->keterangan  = $request->keterangan;
+
+        $sendAt             = $request->send_at . ' ' . $request->time . ':00';
+        $promo->send_at     = $sendAt;
         $promo->save();
 
         return redirect(route('promo.index'))->withToastSuccess('Data Berhasil Disimpan!');
@@ -58,15 +62,18 @@ class PromoController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nama_promo'   => 'required',
-            'pekerjaan'   => 'required',
-            'gambar'    => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'keterangan'    => 'required'
+            'nama_promo' => 'required',
+            'pekerjaan'  => 'required',
+            'gambar'     => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'keterangan' => 'required',
+            'send_at'    => 'nullable'
         ]);
 
         $promo = Promo::find($id);
         $promo->nama_promo = $request->nama_promo;
         $promo->pekerjaan = $request->pekerjaan;
+        $sendAt = $request->send_at . ' ' . $request->time . ':00';
+        $promo->send_at = $sendAt;
         if ($request->gambar != '') {
             $jalurTujuan = public_path('/gambar/');
 

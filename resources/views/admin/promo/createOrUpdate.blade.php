@@ -38,10 +38,10 @@
                                 <div class="row">
                                     <div class="col-md-12 col-xl-12">
                                         <div class="mb-3">
-                                            {!! Form::label('judul', 'Judul Promo', ['class' => 'form-label']) !!}
-                                            {{-- {!! Form::text('judul', Input::old('judul'), ['id' => 'judul', 'class' => 'form-control', 'placeholder' => 'Jenis Promo']) !!} --}}
-                                            <input type="text" name="nama_promo" value="{{ old('nama_promo') }}"
-                                                placeholder="Masukkan Nama Akun" class="form-control" required>
+                                            {!! Form::label('nama_promo', 'Nama Promo', ['class' => 'form-label']) !!}
+                                            {!! Form::text('nama_promo', null, ['id' => 'nama_promo', 'class' => 'form-control', 'placeholder' => 'Nama Promo']) !!}
+                                            {{-- <input type="text" name="nama_promo" value="{{ old('nama_promo') }}"
+                                                placeholder="Masukkan Nama Akun" class="form-control" required> --}}
 
                                             @error('nama_promo')
                                                 <div class="invalid-feedback" style="display: block">
@@ -51,14 +51,17 @@
                                         </div>
                                         <div class="mb-3">
                                             {!! Form::label('pekerjaan', 'Pekerjaan', ['class' => 'form-label']) !!}
-                                            <select class="form-select" id="pekerjaan" name="pekerjaan"
-                                                aria-label="Default select example" required>
-                                                <option disabled selected value="">Pilih Pekerjaan</option>
-                                                <option value="Siswa">Siswa</option>
-                                                <option value="Mahasiswa">Mahasiswa</option>
-                                                <option value="Wiraswasta">Wiraswasta</option>
-                                                <option value="ASN">ASN</option>
-                                            </select>
+                                            {{ Form::select(
+                                                'pekerjaan',
+                                                [
+                                                    'Siswa' => 'Siswa',
+                                                    'Mahasiswa' => 'Mahasiswa',
+                                                    'Wiraswasta' => 'Wiraswasta',
+                                                    'ASN' => 'ASN',
+                                                ],
+                                                null,
+                                                ['placeholder' => 'Pilih Pekerjaan', 'class' => 'form-select'],
+                                            ) }}
                                         </div>
                                         <div class="mb-3">
                                             {!! Form::label('gambar', 'Gambar', ['class' => 'form-label']) !!}
@@ -69,15 +72,25 @@
     Form::label(
         'keterangan',
         'Keterangan Promo
-                                        <span class="form-label-description">
-                                            <span id="current" style="margin-right: -4px;">0</span>
-                                            <span id="maximum">/100</span>
-                                        </span>
-                                        ',
+                                                                                    <span class="form-label-description">
+                                                                                        <span id="current" style="margin-right: -4px;">0</span>
+                                                                                        <span id="maximum">/100</span>
+                                                                                    </span>
+                                                                                    ',
         ['id' => 'the-count', 'class' => 'form-label'],
     ),
 ) !!}
                                             {!! Form::textarea('keterangan', Input::old('keterangan'), ['id' => 'keterangan_paket', 'class' => 'form-control', 'placeholder' => 'Keterangan Paket', 'rows' => '6']) !!}
+                                        </div>
+
+                                        <div class="mb-3 row">
+                                            {!! Form::label('send_at', 'Dikirim saat (Opsional)', ['class' => 'form-label']) !!}
+                                            <div class="col-6">
+                                                {!! Form::date('send_at', null, ['id' => 'judul', 'class' => 'form-control', 'placeholder' => 'Tanggal']) !!}
+                                            </div>
+                                            <div class="col-6">
+                                                {!! Form::time('time', null, ['id' => 'time', 'class' => 'form-control', 'placeholder' => 'Jam']) !!}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -86,7 +99,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="d-flex">
-                            <a href="{{ route('paket.index') }}" class="btn btn-secondary">Batal</a>
+                            <a href="{{ url('/admin/promo') }}" class="btn btn-secondary">Batal</a>
                             @if (isset($paket))
                                 {!! Form::submit('Perbaharui', [
     'name' => 'simpan',

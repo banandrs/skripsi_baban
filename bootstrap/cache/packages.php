@@ -69,4 +69,11 @@
       'Alert' => 'RealRashid\\SweetAlert\\Facades\\Alert',
     ),
   ),
+  'spatie/laravel-short-schedule' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Spatie\\ShortSchedule\\ShortScheduleServiceProvider',
+    ),
+  ),
 );
