@@ -40,7 +40,10 @@ class HomeController extends Controller
         $userMahasiswa = $this->__queryUserMahaSiswa();
         $userWiraswasta = $this->__queryUserWiraswasta();
         $userAsn = $this->__queryUserAsn();
-        $userLainnya = $this->__queryUserLainnya();
+        $userUsia1 = $this->__queryUserUsia1();
+        $userUsia2 = $this->__queryUserUsia2();
+        $userUsia3 = $this->__queryUserUsia3();
+        $userUsia4 = $this->__queryUserUsia4();
         return view(
             'admin/home',
             [
@@ -51,7 +54,10 @@ class HomeController extends Controller
                 'userMahasiswa' => $userMahasiswa,
                 'userWiraswasta' => $userWiraswasta,
                 'userAsn' => $userAsn,
-                'userLainnya' => $userLainnya,
+                'userUsia1' => $userUsia1,
+                'userUsia2' => $userUsia2,
+                'userUsia3' => $userUsia3,
+                'userUsia4' => $userUsia4,
             ]
         );
     }
@@ -110,12 +116,43 @@ class HomeController extends Controller
             ->where('users.pekerjaan', '=', 'asn')
             ->count();
     }
-    ##LAINNYA
-    private function __queryUserLainnya()
+
+
+    ##SISWA
+    private function __queryUserUsia1()
     {
         return DB::table('users')
             ->select('users.*')
-            ->where('users.pekerjaan', '=', 'lainnya')
+            ->where('users.umur', '=', '1')
             ->count();
     }
+    private function __queryUserUsia2()
+    {
+        return DB::table('users')
+            ->select('users.*')
+            ->where('users.umur', '=', '2')
+            ->count();
+    }
+    private function __queryUserUsia3()
+    {
+        return DB::table('users')
+            ->select('users.*')
+            ->where('users.umur', '=', '3')
+            ->count();
+    }
+    private function __queryUserUsia4()
+    {
+        return DB::table('users')
+            ->select('users.*')
+            ->where('users.umur', '=', '4')
+            ->count();
+    }
+    ##LAINNYA
+    // private function __queryUserLainnya()
+    // {
+    //     return DB::table('users')
+    //         ->select('users.*')
+    //         ->where('users.pekerjaan', '=', 'lainnya')
+    //         ->count();
+    // }
 }

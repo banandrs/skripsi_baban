@@ -149,9 +149,45 @@
                                                 <option value="{{ $userMahasiswa }}-Pelanggan">Mahasiswa</option>
                                                 <option value="{{ $userWiraswasta }}-Pelanggan">Wiraswasta</option>
                                                 <option value="{{ $userAsn }}-Pelanggan">ASN</option>
-                                                <option value="{{ $userLainnya }}-Pelanggan">Lainnya</option>
+                                                {{-- <option value="{{ $userLainnya }}-Pelanggan">Lainnya</option> --}}
                                             </select>
                                             <div class="text-muted" id="loc"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="card card-sm">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <span class="bg-orange text-white avatar">
+                                                <!-- Download SVG icon from http://tabler-icons.io/i/shopping-cart -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
+                                                    height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                    stroke="currentColor" fill="none" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                    <circle cx="12" cy="7" r="4" />
+                                                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                                                </svg>
+
+                                            </span>
+                                        </div>
+                                        <div class="col">
+                                            <select class="form-select first-select" id="id" name="usia">
+                                                {{-- <option selected="selected">Mahasiswa</option> --}}
+                                                <option disabled selected value="">Usia</option>
+                                                <option value="{{ $userUsia1 }}-Pelanggan">16-25</option>
+                                                <option value="{{ $userUsia2 }}-Pelanggan">26-35</option>
+                                                <option value="{{ $userUsia3 }}-Pelanggan">36-45</option>
+                                                <option value="{{ $userUsia4 }}-Pelanggan">46-55</option>
+                                                {{-- <option value="{{ $userLainnya }}-Pelanggan">Lainnya</option> --}}
+                                            </select>
+                                            <div class="text-muted" id="lok"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -373,6 +409,11 @@
     <script>
         $("select").change(function() {
             document.getElementById("loc").innerHTML = document.getElementById("se").value;
+        });
+    </script>
+    <script>
+        $("select").change(function() {
+            document.getElementById("lok").innerHTML = document.getElementById("id").value;
         });
     </script>
 @endsection

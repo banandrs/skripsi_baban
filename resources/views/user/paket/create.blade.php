@@ -67,7 +67,40 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                {!! Form::select('waktu', ['08.00 WIB' => '08.00 WIB', '08.30 WIB' => '08.30 WIB', '09.00 WIB' => '09.00 WIB', '09.30 WIB' => '09.30 WIB', '10.00 WIB' => '10.00 WIB', '10.30 WIB' => '10.30 WIB', '11.00 WIB' => '11.00 WIB', '11.30 WIB' => '11.30 WIB', '12.00 WIB' => '12.00 WIB', '12.30 WIB' => '12.30 WIB', '13.00 WIB' => '13.00 WIB', '13.30 WIB' => '13.30 WIB', '13.30 WIB' => '13.30 WIB', '14.00 WIB' => '14.00 WIB', '14.30 WIB' => '14.30 WIB', '15.00 WIB' => '15.00 WIB', '15.30 WIB' => '15.30 WIB', '16.00 WIB' => '16.00 WIB', '16.30 WIB' => '16.30 WIB', '17.00 WIB' => '17.00 WIB', '17.30 WIB' => '17.30 WIB', '18.00 WIB' => '18.00 WIB', '18.30 WIB' => '18.30 WIB', '19.00 WIB' => '19.00 WIB', '19.30 WIB' => '19.30 WIB', '20.00 WIB' => '20.00 WIB', '20.30 WIB' => '20.30 WIB'], null, ['id' => 'waktu', 'placeholder' => 'Pilih waktu', 'class' => 'form-control']) !!}
+                                {!! Form::select(
+                                    'waktu',
+                                    [
+                                        '08.00 WIB' => '08.00 WIB',
+                                        '08.30 WIB' => '08.30 WIB',
+                                        '09.00 WIB' => '09.00 WIB',
+                                        '09.30 WIB' => '09.30 WIB',
+                                        '10.00 WIB' => '10.00 WIB',
+                                        '10.30 WIB' => '10.30 WIB',
+                                        '11.00 WIB' => '11.00 WIB',
+                                        '11.30 WIB' => '11.30 WIB',
+                                        '12.00 WIB' => '12.00 WIB',
+                                        '12.30 WIB' => '12.30 WIB',
+                                        '13.00 WIB' => '13.00 WIB',
+                                        '13.30 WIB' => '13.30 WIB',
+                                        '13.30 WIB' => '13.30 WIB',
+                                        '14.00 WIB' => '14.00 WIB',
+                                        '14.30 WIB' => '14.30 WIB',
+                                        '15.00 WIB' => '15.00 WIB',
+                                        '15.30 WIB' => '15.30 WIB',
+                                        '16.00 WIB' => '16.00 WIB',
+                                        '16.30 WIB' => '16.30 WIB',
+                                        '17.00 WIB' => '17.00 WIB',
+                                        '17.30 WIB' => '17.30 WIB',
+                                        '18.00 WIB' => '18.00 WIB',
+                                        '18.30 WIB' => '18.30 WIB',
+                                        '19.00 WIB' => '19.00 WIB',
+                                        '19.30 WIB' => '19.30 WIB',
+                                        '20.00 WIB' => '20.00 WIB',
+                                        '20.30 WIB' => '20.30 WIB',
+                                    ],
+                                    null,
+                                    ['id' => 'waktu', 'placeholder' => 'Pilih waktu', 'class' => 'form-control'],
+                                ) !!}
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -107,7 +140,7 @@
                                         <option value="Mahasiswa">Mahasiswa</option>
                                         <option value="Wiraswasta">Wiraswasta</option>
                                         <option value="ASN">ASN</option>
-                                        <option value="Lainnya">Lainnya</option>
+                                        {{-- <option value="Lainnya">Lainnya</option> --}}
                                     </select>
                                 </div>
                             </div>
