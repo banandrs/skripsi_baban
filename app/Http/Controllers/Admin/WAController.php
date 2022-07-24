@@ -32,7 +32,7 @@ class WAController extends Controller
             $params[] = ['receiver' => $user->no_hp, 'message' => $request->keterangan];
         }
         $data = json_encode($params);
-        $url = 'https://wa-restapi2.herokuapp.com/chats/send-bulk?id=' . $sender;
+        $url = env('WA_URL') . '/chats/send-bulk?id=' . $sender;
 
 
         # single
