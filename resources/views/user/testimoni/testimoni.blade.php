@@ -74,7 +74,7 @@
                     <p>Bantu rating kami dengan berikan pendapat dan saran anda</p>
                 </div>
             </div>
-            <h3 class="vr">Hubungi Kami: 012-3456-7890</h3>
+            <h3 class="vr">Hubungi Kami: 0812-3456-7890</h3>
             <div class="row justify-content-center">
                 <div class="col-md-10 ftco-animate">
                     @if (session()->has('message'))

@@ -78,8 +78,7 @@
                                                     class="btn btn-success btn-sm">Sunting
                                                 </a>
                                                 <button type="button" class="btn btn-primary btn-sm send--wa"
-                                                    data-id="{{ $promo->id }}"
-                                                    data-pekerjaan="{{ $promo->pekerjaan }}"
+                                                    data-id="{{ $promo->id }}" data-pekerjaan="{{ $promo->pekerjaan }}"
                                                     data-keterangan="{{ $promo->keterangan }}">
                                                     Kirim
                                                 </button>
