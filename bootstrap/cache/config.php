@@ -2,13 +2,13 @@
   'app' => 
   array (
     'name' => 'Laravel',
-    'env' => 'local',
-    'debug' => true,
+    'env' => 'production',
+    'debug' => false,
     'url' => 'http://localhost',
     'timezone' => 'UTC',
     'locale' => 'en',
     'fallback_locale' => 'en',
-    'key' => 'base64:IBUjNW9pU7CM6484d9JFm0VwMGlsqkcTuZls/Q4p5W8=',
+    'key' => NULL,
     'cipher' => 'AES-256-CBC',
     'log' => 'single',
     'log_level' => 'debug',
@@ -144,15 +144,15 @@
   ),
   'broadcasting' => 
   array (
-    'default' => 'log',
+    'default' => 'null',
     'connections' => 
     array (
       'pusher' => 
       array (
         'driver' => 'pusher',
-        'key' => '',
-        'secret' => '',
-        'app_id' => '',
+        'key' => NULL,
+        'secret' => NULL,
+        'app_id' => NULL,
         'options' => 
         array (
         ),
@@ -194,7 +194,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\laragon\\www\\studio-foto-4\\storage\\framework/cache/data',
+        'path' => 'F:\\Sinemaku\\skripsi_baban\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -234,7 +234,7 @@
       'sqlite' => 
       array (
         'driver' => 'sqlite',
-        'database' => 'sinemakoe',
+        'database' => 'F:\\Sinemaku\\skripsi_baban\\database\\database.sqlite',
         'prefix' => '',
       ),
       'mysql' => 
@@ -242,9 +242,9 @@
         'driver' => 'mysql',
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'sinemakoe',
-        'username' => 'root',
-        'password' => 'root',
+        'database' => 'forge',
+        'username' => 'forge',
+        'password' => '',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
@@ -256,10 +256,10 @@
       array (
         'driver' => 'pgsql',
         'host' => '127.0.0.1',
-        'port' => '3306',
-        'database' => 'sinemakoe',
-        'username' => 'root',
-        'password' => 'root',
+        'port' => '5432',
+        'database' => 'forge',
+        'username' => 'forge',
+        'password' => '',
         'charset' => 'utf8',
         'prefix' => '',
         'schema' => 'public',
@@ -268,11 +268,11 @@
       'sqlsrv' => 
       array (
         'driver' => 'sqlsrv',
-        'host' => '127.0.0.1',
-        'port' => '3306',
-        'database' => 'sinemakoe',
-        'username' => 'root',
-        'password' => 'root',
+        'host' => 'localhost',
+        'port' => '1433',
+        'database' => 'forge',
+        'username' => 'forge',
+        'password' => '',
         'charset' => 'utf8',
         'prefix' => '',
       ),
@@ -285,7 +285,7 @@
       array (
         'host' => '127.0.0.1',
         'password' => NULL,
-        'port' => '6379',
+        'port' => 6379,
         'database' => 0,
       ),
     ),
@@ -395,7 +395,7 @@
     ),
     'temporary_files' => 
     array (
-      'local_path' => 'C:\\laragon\\www\\studio-foto-4\\storage\\framework/cache/laravel-excel',
+      'local_path' => 'F:\\Sinemaku\\skripsi_baban\\storage\\framework/cache/laravel-excel',
       'remote_disk' => NULL,
       'remote_prefix' => NULL,
       'force_resync_remote' => NULL,
@@ -410,13 +410,13 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\laragon\\www\\studio-foto-4\\storage\\app',
+        'root' => 'F:\\Sinemaku\\skripsi_baban\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\laragon\\www\\studio-foto-4\\storage\\app/public',
-        'url' => 'http://localhost/storage',
+        'root' => 'F:\\Sinemaku\\skripsi_baban\\storage\\app/public',
+        'url' => '/storage',
         'visibility' => 'public',
       ),
       's3' => 
@@ -430,152 +430,6 @@
     ),
   ),
   'helpers' => 1,
-  'mail' => 
-  array (
-    'driver' => 'smtp',
-    'host' => 'smtp.gmail.com',
-    'port' => '587',
-    'from' => 
-    array (
-      'address' => 'hello@example.com',
-      'name' => 'Example',
-    ),
-    'encryption' => 'tls',
-    'username' => 'andreasnababan@student.untan.ac.id',
-    'password' => 'babipincang888',
-    'sendmail' => '/usr/sbin/sendmail -bs',
-    'markdown' => 
-    array (
-      'theme' => 'default',
-      'paths' => 
-      array (
-        0 => 'C:\\laragon\\www\\studio-foto-4\\resources\\views/vendor/mail',
-      ),
-    ),
-  ),
-  'queue' => 
-  array (
-    'default' => 'sync',
-    'connections' => 
-    array (
-      'sync' => 
-      array (
-        'driver' => 'sync',
-      ),
-      'database' => 
-      array (
-        'driver' => 'database',
-        'table' => 'jobs',
-        'queue' => 'default',
-        'retry_after' => 90,
-      ),
-      'beanstalkd' => 
-      array (
-        'driver' => 'beanstalkd',
-        'host' => 'localhost',
-        'queue' => 'default',
-        'retry_after' => 90,
-      ),
-      'sqs' => 
-      array (
-        'driver' => 'sqs',
-        'key' => 'your-public-key',
-        'secret' => 'your-secret-key',
-        'prefix' => 'https://sqs.us-east-1.amazonaws.com/your-account-id',
-        'queue' => 'your-queue-name',
-        'region' => 'us-east-1',
-      ),
-      'redis' => 
-      array (
-        'driver' => 'redis',
-        'connection' => 'default',
-        'queue' => 'default',
-        'retry_after' => 90,
-      ),
-    ),
-    'failed' => 
-    array (
-      'database' => 'mysql',
-      'table' => 'failed_jobs',
-    ),
-  ),
-  'services' => 
-  array (
-    'mailgun' => 
-    array (
-      'domain' => NULL,
-      'secret' => NULL,
-    ),
-    'ses' => 
-    array (
-      'key' => NULL,
-      'secret' => NULL,
-      'region' => 'us-east-1',
-    ),
-    'sparkpost' => 
-    array (
-      'secret' => NULL,
-    ),
-    'stripe' => 
-    array (
-      'model' => 'App\\User',
-      'key' => NULL,
-      'secret' => NULL,
-    ),
-  ),
-  'session' => 
-  array (
-    'driver' => 'file',
-    'lifetime' => 120,
-    'expire_on_close' => false,
-    'encrypt' => false,
-    'files' => 'C:\\laragon\\www\\studio-foto-4\\storage\\framework/sessions',
-    'connection' => NULL,
-    'table' => 'sessions',
-    'store' => NULL,
-    'lottery' => 
-    array (
-      0 => 2,
-      1 => 100,
-    ),
-    'cookie' => 'laravel_session',
-    'path' => '/',
-    'domain' => NULL,
-    'secure' => false,
-    'http_only' => true,
-  ),
-  'sweetalert' => 
-  array (
-    'cdn' => NULL,
-    'timer' => 5000,
-    'width' => '32rem',
-    'height_auto' => true,
-    'padding' => '1.25rem',
-    'animation' => 
-    array (
-      'enable' => true,
-      'showClass' => 'animated fadeInDown faster',
-      'hideClass' => 'animated fadeOutUp faster',
-    ),
-    'animatecss' => 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css',
-    'show_confirm_button' => true,
-    'show_close_button' => false,
-    'toast_position' => 'top-end',
-    'middleware' => 
-    array (
-      'toast_position' => 'top-end',
-      'toast_close_button' => false,
-      'alert_auto_close' => 5000,
-    ),
-  ),
-  'view' => 
-  array (
-    'paths' => 
-    array (
-      0 => 'C:\\laragon\\www\\studio-foto-4\\resources\\views',
-    ),
-    'compiled' => 'C:\\laragon\\www\\studio-foto-4\\storage\\framework\\views',
-  ),
   'laravel-to-uml' => 
   array (
     'route' => '/uml',
@@ -665,6 +519,152 @@
       'rules' => 'Rules/',
     ),
   ),
+  'mail' => 
+  array (
+    'driver' => 'smtp',
+    'host' => 'smtp.mailgun.org',
+    'port' => 587,
+    'from' => 
+    array (
+      'address' => 'hello@example.com',
+      'name' => 'Example',
+    ),
+    'encryption' => 'tls',
+    'username' => NULL,
+    'password' => NULL,
+    'sendmail' => '/usr/sbin/sendmail -bs',
+    'markdown' => 
+    array (
+      'theme' => 'default',
+      'paths' => 
+      array (
+        0 => 'F:\\Sinemaku\\skripsi_baban\\resources\\views/vendor/mail',
+      ),
+    ),
+  ),
+  'queue' => 
+  array (
+    'default' => 'sync',
+    'connections' => 
+    array (
+      'sync' => 
+      array (
+        'driver' => 'sync',
+      ),
+      'database' => 
+      array (
+        'driver' => 'database',
+        'table' => 'jobs',
+        'queue' => 'default',
+        'retry_after' => 90,
+      ),
+      'beanstalkd' => 
+      array (
+        'driver' => 'beanstalkd',
+        'host' => 'localhost',
+        'queue' => 'default',
+        'retry_after' => 90,
+      ),
+      'sqs' => 
+      array (
+        'driver' => 'sqs',
+        'key' => 'your-public-key',
+        'secret' => 'your-secret-key',
+        'prefix' => 'https://sqs.us-east-1.amazonaws.com/your-account-id',
+        'queue' => 'your-queue-name',
+        'region' => 'us-east-1',
+      ),
+      'redis' => 
+      array (
+        'driver' => 'redis',
+        'connection' => 'default',
+        'queue' => 'default',
+        'retry_after' => 90,
+      ),
+    ),
+    'failed' => 
+    array (
+      'database' => 'mysql',
+      'table' => 'failed_jobs',
+    ),
+  ),
+  'services' => 
+  array (
+    'mailgun' => 
+    array (
+      'domain' => NULL,
+      'secret' => NULL,
+    ),
+    'ses' => 
+    array (
+      'key' => NULL,
+      'secret' => NULL,
+      'region' => 'us-east-1',
+    ),
+    'sparkpost' => 
+    array (
+      'secret' => NULL,
+    ),
+    'stripe' => 
+    array (
+      'model' => 'App\\User',
+      'key' => NULL,
+      'secret' => NULL,
+    ),
+  ),
+  'session' => 
+  array (
+    'driver' => 'file',
+    'lifetime' => 120,
+    'expire_on_close' => false,
+    'encrypt' => false,
+    'files' => 'F:\\Sinemaku\\skripsi_baban\\storage\\framework/sessions',
+    'connection' => NULL,
+    'table' => 'sessions',
+    'store' => NULL,
+    'lottery' => 
+    array (
+      0 => 2,
+      1 => 100,
+    ),
+    'cookie' => 'laravel_session',
+    'path' => '/',
+    'domain' => NULL,
+    'secure' => false,
+    'http_only' => true,
+  ),
+  'sweetalert' => 
+  array (
+    'cdn' => NULL,
+    'timer' => 5000,
+    'width' => '32rem',
+    'height_auto' => true,
+    'padding' => '1.25rem',
+    'animation' => 
+    array (
+      'enable' => true,
+      'showClass' => 'animated fadeInDown faster',
+      'hideClass' => 'animated fadeOutUp faster',
+    ),
+    'animatecss' => 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css',
+    'show_confirm_button' => true,
+    'show_close_button' => false,
+    'toast_position' => 'top-end',
+    'middleware' => 
+    array (
+      'toast_position' => 'top-end',
+      'toast_close_button' => true,
+      'alert_auto_close' => 5000,
+    ),
+  ),
+  'view' => 
+  array (
+    'paths' => 
+    array (
+      0 => 'F:\\Sinemaku\\skripsi_baban\\resources\\views',
+    ),
+    'compiled' => 'F:\\Sinemaku\\skripsi_baban\\storage\\framework\\views',
+  ),
   'debugbar' => 
   array (
     'enabled' => NULL,
@@ -676,7 +676,7 @@
     array (
       'enabled' => true,
       'driver' => 'file',
-      'path' => 'C:\\laragon\\www\\studio-foto-4\\storage\\debugbar',
+      'path' => 'F:\\Sinemaku\\skripsi_baban\\storage\\debugbar',
       'connection' => NULL,
       'provider' => '',
     ),
